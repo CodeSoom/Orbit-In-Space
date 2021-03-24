@@ -1,12 +1,10 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import { BrowserRouter } from 'react-router-dom';
 
 import Router from './Router';
 
-import { styles } from './designSystem'
+import { styles } from './designSystem';
 
 const Container = styled.div({
   ...styles.center,

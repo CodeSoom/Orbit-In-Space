@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const Container = styled.div({
   margin: '3em 0',
-})
+});
 
 const Title = styled.h1({
   fontSize: '1.5em',

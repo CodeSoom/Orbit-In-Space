@@ -20,7 +20,7 @@ describe('HomePage', () => {
         history={history}
         onClick={handleClick}
       />
-    ))
+    ));
   }
 
   it('renders title', () => {

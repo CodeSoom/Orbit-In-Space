@@ -1,21 +1,41 @@
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import PlanetsPage from './PlanetsPage';
 
 describe('PlanetsPage', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      planets: [
+        { id: 1, mood: '행복' },
+      ],
+    }));
+  });
+
+  function renderPlanetsPage() {
+    return render((
+      <PlanetsPage />
+    ));
+  }
+
   it('renders title', () => {
-    const { container } = render(<PlanetsPage />);
+    const { container } = renderPlanetsPage();
 
     expect(container).toHaveTextContent(/행성을 클릭해주세요/);
   });
 
-  it('renders planets items', () => {
-    const planets = [
-      { id: 1, mood: '행복'},
-    ];
+  it('renders planets and select buttons', () => {
+    const { queryByText } = renderPlanetsPage();
 
-    const { container } = render(<PlanetsPage planets={planets}/>);
+    expect(dispatch).toBeCalled();
 
-    expect(container).toHaveTextContent('행복');
+    expect(queryByText('행복')).not.toBeNull();
   });
 });
