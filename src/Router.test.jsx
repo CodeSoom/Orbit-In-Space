@@ -4,9 +4,27 @@ import {
 
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import Router from './Router';
 
+jest.mock('react-redux');
+
 describe('Router', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      planets: [
+        { id: 1, mood: '행복' },
+      ],
+    }));
+  });
+
   function renderRouter({ path }) {
     return render((
       <MemoryRouter initialEntries={[path]}>

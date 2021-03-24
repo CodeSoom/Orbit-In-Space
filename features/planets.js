@@ -1,5 +1,3 @@
-Feature('planets page');
-
 const planets = [
   { id: 1, mood: '행복' },
   { id: 2, mood: '뿌듯' },
@@ -12,12 +10,4 @@ const planets = [
   { id: 9, mood: '우울' },
 ];
 
-Scenario('Visit the planets page', ({ I }) => {
-  I.amOnPage('/planets');
-
-  I.see('행성을 클릭해주세요');
-
-  planets.forEach(({ mood }) => {
-    I.see(mood);
-  });
-});
+export default planets;
