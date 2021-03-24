@@ -6,13 +6,13 @@ import {
 } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
-import ObjectFormPage from "./pages/ObjectFormPage";
+import PlanetsPage from "./pages/PlanetsPage";
 
 export default function Router() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/object" component={ObjectFormPage} />
+      <Route path="/planets" component={PlanetsPage} />
     </Switch>
   );
 }
