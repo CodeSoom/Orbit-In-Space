@@ -19,15 +19,15 @@ describe('Router', () => {
     it('renders the home page', () => {
       const { container } = renderRouter({ path: '/' });
 
-      expect(container).toHaveTextContent('환영합니다');
+      expect(container).toHaveTextContent('오늘은 어떤 하루였나요?');
     });
   });
 
-  context('with path /object', () => {
-    it('renders the object page', () => {
-      const { container } = renderRouter({ path: '/object' });
+  context('with path /planets', () => {
+    it('renders the planets Page', () => {
+      const { container } = renderRouter({ path: '/planets' });
 
-      expect(container).toHaveTextContent('목표를 설정해볼까요?');
+      expect(container).toHaveTextContent('행성을 클릭해주세요');
     });
   });
 });

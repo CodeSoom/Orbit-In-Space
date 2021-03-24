@@ -8,10 +8,10 @@ const Title = styled.h1({
   fontSize: '1.5em',
 });
 
-export default function ObjectFormPage() {
+export default function PlanetsPage() {
   return (
     <Container>
-      <Title>목표를 설정해볼까요?</Title>
+      <Title>행성을 클릭해주세요</Title>
     </Container>
   );
 }
