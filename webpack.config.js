@@ -44,8 +44,8 @@ module.exports = {
     }),
   ],
   devServer: {
-    historyApiFallback: {
-      index: 'index.html',
-    },
+    disableHostCheck: true,
+    host: '0.0.0.0',
+    historyApiFallback: true,
   },
 };

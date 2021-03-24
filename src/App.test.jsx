@@ -2,10 +2,10 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
-describe('App', () => {
-  it('renders greeting message', () => {
-    const { container } = render(<App />);
+jest.mock('react-router-dom');
 
-    expect(container).toHaveTextContent('Hello, world!');
+describe('App', () => {
+  it('renders without crash', () => {
+    render(<App />);
   });
 });
