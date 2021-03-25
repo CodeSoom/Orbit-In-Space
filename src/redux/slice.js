@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchPlanets } from '../services/api';
+import {
+  fetchPlanets,
+} from '../services/api';
 
 import { equal } from '../utils';
 
@@ -8,7 +10,7 @@ const { actions, reducer } = createSlice({
   name: 'application',
   initialState: {
     planets: [],
-    selectPlanet: null,
+    selectedPlanet: null,
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
@@ -17,11 +19,12 @@ const { actions, reducer } = createSlice({
         planets,
       };
     },
+
     selectPlanet(state, { payload: planetId }) {
       const { planets } = state;
       return {
         ...state,
-        selectPlanet: planets.find(equal('id', planetId)),
+        selectedPlanet: planets.find(equal('id', planetId)),
       };
     },
   },

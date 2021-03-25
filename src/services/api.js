@@ -1,8 +1,7 @@
 import planets from '../data/planets';
 
 export function fetchPlanets() {
-  const data = planets;
-  return data;
+  return planets;
 }
 
 // TODO: delete this!

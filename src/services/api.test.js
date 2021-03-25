@@ -2,7 +2,7 @@ import {
   fetchPlanets,
 } from './api';
 
-import PLANETS from '../../features/planets';
+import PLANETS from '../../fixtures/planets';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -17,9 +17,9 @@ describe('api', () => {
     });
 
     it('returns planets', () => {
-      const data = fetchPlanets();
+      const planets = fetchPlanets();
 
-      expect(data).toEqual(PLANETS);
+      expect(planets).toEqual(PLANETS);
     });
   });
 });
