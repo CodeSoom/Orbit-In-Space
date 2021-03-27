@@ -1,31 +1,53 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+import styled from '@emotion/styled';
+
 import {
   selectPlanet,
 } from './redux/slice';
 
+import { colors } from './designSystem';
+
 import { get } from './utils';
 
-export default function PlanetsContainer() {
+const SelectButton = styled.button(({ active }) => ({
+  fontSize: '.8em',
+  margin: '1em 0',
+  padding: '.6em 2em',
+  border: '1px solid',
+  borderColor: active ? 'transparent' : colors.highlight,
+  borderRadius: '15px',
+  background: active ? colors.highlight : 'transparent',
+  color: colors.white,
+  textDecoration: 'none',
+  cursor: 'pointer',
+}));
+
+export default function PlanetsContainer({ onClickPlanet }) {
   const dispatch = useDispatch();
 
   const planets = useSelector(get('planets'));
+  const selectedPlanet = useSelector(get('selectedPlanet'));
 
   function handleClick(planetsId) {
     dispatch(selectPlanet(planetsId));
+    onClickPlanet();
   }
+
+  const isSelected = (item) => (item.id === selectedPlanet.id);
 
   return (
     <>
       <ul>
-        {planets.map(({ id, mood }) => (
-          <li key={id}>
-            <button
+        {planets.map((planet) => (
+          <li key={planet.id}>
+            <SelectButton
               type="button"
-              onClick={handleClick(id)}
+              active={selectedPlanet && isSelected(planet)}
+              onClick={() => handleClick(planet.id)}
             >
-              {mood}
-            </button>
+              {planet.mood}
+            </SelectButton>
           </li>
         ))}
       </ul>

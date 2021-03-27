@@ -1,14 +1,13 @@
 import reducer, {
   setPlanets,
   selectPlanet,
-  loadInitialData,
 } from './slice';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
       planets: [],
-      selectPlanet: null,
+      selectedPlanet: null,
     };
 
     it('returns initialState', () => {
@@ -34,17 +33,15 @@ describe('reducer', () => {
     it('changes selected planet', () => {
       const initialState = {
         planets: [
-        { id: 1, mood: '행복' },
+          { id: 1, mood: '행복' },
         ],
-        selectPlanet: null,
+        selectedPlanet: null,
       };
       const state = reducer(initialState, selectPlanet(1));
-      expect(state.selectPlanet).toEqual({
+      expect(state.selectedPlanet).toEqual({
         id: 1,
         mood: '행복',
       });
     });
   });
 });
-
-

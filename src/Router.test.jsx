@@ -22,6 +22,7 @@ describe('Router', () => {
       planets: [
         { id: 1, mood: '행복' },
       ],
+      selectedPlanet: { id: 1, mood: '행복' },
     }));
   });
 
@@ -46,6 +47,16 @@ describe('Router', () => {
       const { container } = renderRouter({ path: '/planets' });
 
       expect(container).toHaveTextContent('행성을 클릭해주세요');
+    });
+  });
+
+  context('with path /planet', () => {
+    it('renders the planet Page', () => {
+      const selectedPlanet = { id: 1, mood: '행복' };
+
+      const { container } = renderRouter({ path: '/planet' });
+
+      expect(container).toHaveTextContent(`오늘은 ${selectedPlanet.mood} 행성이네요`);
     });
   });
 });

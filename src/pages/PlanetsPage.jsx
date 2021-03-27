@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { useHistory } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 
 import {
@@ -19,16 +21,23 @@ const Title = styled.h1({
 });
 
 export default function PlanetsPage() {
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadInitialData());
   });
 
+  function handleClickPlanet() {
+    const url = '/planet';
+    history.push(url);
+  }
+
   return (
     <Container>
       <Title>행성을 클릭해주세요</Title>
-      <PlanetsContainer />
+      <PlanetsContainer onClickPlanet={handleClickPlanet} />
     </Container>
   );
 }
