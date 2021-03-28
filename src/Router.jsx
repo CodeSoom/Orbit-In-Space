@@ -11,8 +11,8 @@ export default function Router() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/planets" component={PlanetsPage} />
-      <Route path="/planet" component={PlanetPage} />
+      <Route exact path="/planets" component={PlanetsPage} />
+      <Route path="/planets/:id" component={PlanetPage} />
     </Switch>
   );
 }

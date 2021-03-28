@@ -6,22 +6,41 @@ import {
   selectPlanet,
 } from './redux/slice';
 
-import { colors } from './designSystem';
+import { colors, mq } from './designSystem';
+
+import { images } from './assets';
 
 import { get } from './utils';
 
-const SelectButton = styled.button(({ active }) => ({
-  fontSize: '.8em',
-  margin: '1em 0',
-  padding: '.6em 2em',
-  border: '1px solid',
-  borderColor: active ? 'transparent' : colors.highlight,
-  borderRadius: '15px',
-  background: active ? colors.highlight : 'transparent',
+const List = styled.li({
+  display: 'inline-flex',
+  margin: '1em .5em 0',
+  '&: first-of-type': {
+    marginTop: '4em',
+  },
+});
+
+const SelectButton = styled.button({
+  fontSize: '1em',
+  borderColor: 'transparent',
+  background: 'transparent',
   color: colors.white,
   textDecoration: 'none',
   cursor: 'pointer',
-}));
+});
+
+const Image = styled.div({
+  display: 'block',
+  marginBottom: '.5em',
+  '& img': {
+    width: '90px',
+    height: '90px',
+    [mq.desktop]: {
+      width: '130px',
+      height: '130px',
+    },
+  },
+});
 
 export default function PlanetsContainer({ onClickPlanet }) {
   const dispatch = useDispatch();
@@ -31,7 +50,7 @@ export default function PlanetsContainer({ onClickPlanet }) {
 
   function handleClick(planetsId) {
     dispatch(selectPlanet(planetsId));
-    onClickPlanet();
+    onClickPlanet(planetsId);
   }
 
   const isSelected = (item) => (item.id === selectedPlanet.id);
@@ -40,15 +59,21 @@ export default function PlanetsContainer({ onClickPlanet }) {
     <>
       <ul>
         {planets.map((planet) => (
-          <li key={planet.id}>
+          <List key={planet.id}>
             <SelectButton
               type="button"
               active={selectedPlanet && isSelected(planet)}
               onClick={() => handleClick(planet.id)}
             >
+              <Image>
+                <img
+                  src={images.planets[planet.id]}
+                  alt=""
+                />
+              </Image>
               {planet.mood}
             </SelectButton>
-          </li>
+          </List>
         ))}
       </ul>
     </>
