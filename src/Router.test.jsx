@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Router from './Router';
 
 jest.mock('react-redux');
+jest.mock('./assets');
 
 describe('Router', () => {
   const dispatch = jest.fn();
@@ -54,7 +55,7 @@ describe('Router', () => {
     it('renders the planet Page', () => {
       const selectedPlanet = { id: 1, mood: '행복' };
 
-      const { container } = renderRouter({ path: '/planet' });
+      const { container } = renderRouter({ path: '/planets/1' });
 
       expect(container).toHaveTextContent(`오늘은 ${selectedPlanet.mood} 행성이네요`);
     });

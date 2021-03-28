@@ -12,4 +12,14 @@ Scenario('Visit the home page', ({ I }) => {
   I.see('행성을 클릭해주세요');
 
   I.see('행복');
+
+  I.click('행복');
+
+  // planets/:id page
+
+  I.see('오늘은 행복 행성이네요');
+
+  I.see('기록보기');
+
+  I.click('기록보기');
 });

@@ -29,8 +29,8 @@ export default function PlanetsPage() {
     dispatch(loadInitialData());
   });
 
-  function handleClickPlanet() {
-    const url = '/planet';
+  function handleClickPlanet(planetsId) {
+    const url = `/planets/${planetsId}`;
     history.push(url);
   }
 

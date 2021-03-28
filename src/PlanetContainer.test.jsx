@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import PlanetContainer from './PlanetContainer';
 
+jest.mock('./assets');
+
 describe('PlanetContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({

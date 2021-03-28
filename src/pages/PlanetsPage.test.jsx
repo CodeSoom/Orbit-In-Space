@@ -1,8 +1,10 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import PlanetsPage from './PlanetsPage';
+
+jest.mock('../assets');
 
 describe('PlanetsPage', () => {
   const dispatch = jest.fn();

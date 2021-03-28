@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PlanetsContainer from './PlanetsContainer';
 
+jest.mock('./assets');
+
 describe('PlanetsContainer', () => {
   const dispatch = jest.fn();
 

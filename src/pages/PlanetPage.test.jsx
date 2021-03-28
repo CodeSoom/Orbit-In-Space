@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import PlanetPage from './PlanetPage';
 
+jest.mock('../assets');
+
 describe('PlanetPage', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
