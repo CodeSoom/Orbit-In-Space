@@ -19,7 +19,7 @@ Scenario('Visit the home page', ({ I }) => {
 
   I.see('오늘은 행복 행성이네요');
 
-  I.see('기록보기');
+  I.see('기록하기');
 
-  I.click('기록보기');
+  I.click('기록하기');
 });

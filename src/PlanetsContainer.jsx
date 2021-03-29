@@ -22,14 +22,14 @@ const List = styled.li({
 
 const SelectButton = styled.button({
   fontSize: '1em',
-  borderColor: 'transparent',
+  border: 'transparent',
   background: 'transparent',
   color: colors.white,
   textDecoration: 'none',
   cursor: 'pointer',
 });
 
-const Image = styled.div({
+const ImageWrapper = styled.div({
   display: 'block',
   marginBottom: '.5em',
   '& img': {
@@ -65,12 +65,12 @@ export default function PlanetsContainer({ onClickPlanet }) {
               active={selectedPlanet && isSelected(planet)}
               onClick={() => handleClick(planet.id)}
             >
-              <Image>
+              <ImageWrapper>
                 <img
                   src={images.planets[planet.id]}
                   alt=""
                 />
-              </Image>
+              </ImageWrapper>
               {planet.mood}
             </SelectButton>
           </List>
