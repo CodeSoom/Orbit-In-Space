@@ -3,22 +3,42 @@ import { render, fireEvent } from '@testing-library/react';
 import MoodInputForm from './MoodInputForm';
 
 describe('MoodInputForm', () => {
+  const handleChange = jest.fn();
   const handleClickSubmit = jest.fn();
 
   beforeEach(() => {
+    handleChange.mockClear();
     handleClickSubmit.mockClear();
   });
 
   function renderMoodInputForm() {
     return render((
-      <MoodInputForm onClick={handleClickSubmit} />
+      <MoodInputForm
+        label="오늘의 기분을 남겨보세요"
+        name="mood"
+        value=""
+        onChange={handleChange}
+        onClick={handleClickSubmit}
+      />
     ));
   }
 
-  it('renders title', () => {
-    const { container } = renderMoodInputForm();
+  it('renders label', () => {
+    const { queryByLabelText } = renderMoodInputForm();
 
-    expect(container).toHaveTextContent('오늘의 기분을 기록해보세요');
+    expect(queryByLabelText(/오늘의 기분을 남겨보세요/)).not.toBeNull();
+  });
+
+  it('listens change events', () => {
+    const { getByLabelText } = renderMoodInputForm();
+
+    fireEvent.change(getByLabelText(/오늘의 기분을 남겨보세요/), {
+      target: { value: '맛있는 점심을 먹어서 행복했다!' },
+    });
+
+    expect(handleChange).toBeCalledWith({
+      name: 'mood', value: '맛있는 점심을 먹어서 행복했다!',
+    });
   });
 
   it('listens click event', () => {
