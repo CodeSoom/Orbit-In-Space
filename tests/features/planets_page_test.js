@@ -20,4 +20,19 @@ Scenario('Visit the planets page', ({ I }) => {
   planets.forEach(({ mood }) => {
     I.see(mood);
   });
+
+  I.click('행복');
+
+  // planets/:id page
+
+  I.see('오늘은 행복 행성이네요');
+
+  I.see('기록하기');
+
+  // modal 클릭
+  I.click('기록하기');
+
+  I.see('오늘의 기분을 기록해보세요');
+
+  I.click('확인');
 });
