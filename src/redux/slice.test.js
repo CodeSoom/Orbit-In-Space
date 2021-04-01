@@ -1,6 +1,7 @@
 import reducer, {
   setPlanets,
   selectPlanet,
+  changeField,
 } from './slice';
 
 describe('reducer', () => {
@@ -8,6 +9,7 @@ describe('reducer', () => {
     const initialState = {
       planets: [],
       selectedPlanet: null,
+      comment: '',
     };
 
     it('returns initialState', () => {
@@ -42,6 +44,21 @@ describe('reducer', () => {
         id: 1,
         mood: '행복',
       });
+    });
+  });
+
+  describe('changeField', () => {
+    it('changes value of field', () => {
+      const initialState = {
+        comment: '',
+      };
+
+      const state = reducer(initialState, changeField({
+        name: 'comment',
+        value: '점심이 맛있어서 행복하다',
+      }));
+
+      expect(state.comment).toEqual('점심이 맛있어서 행복하다');
     });
   });
 });

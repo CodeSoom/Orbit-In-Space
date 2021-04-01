@@ -39,7 +39,7 @@ const BottomBlank = styled.div({
 const Dialog = styled.div(({ visible }) => ({
   marginBottom: visible ? 0 : '-4%',
   padding: '1em',
-  paddingTop: '2em',
+  paddingTop: '5em',
   border: `1px solid ${colors.border}`,
   borderRadius: '50% 50% 0 0',
   background: colors.background,
@@ -47,8 +47,10 @@ const Dialog = styled.div(({ visible }) => ({
   [mq.desktop]: {
     marginTop: visible ? 0 : '-4%',
     marginBottom: 0,
+    paddingTop: '2em',
     paddingBottom: '2em',
     border: `1px solid ${colors.gray}`,
+    borderRadius: '15px',
   },
 }));
 
