@@ -11,6 +11,7 @@ const { actions, reducer } = createSlice({
   initialState: {
     planets: [],
     selectedPlanet: null,
+    comment: '',
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
@@ -19,7 +20,6 @@ const { actions, reducer } = createSlice({
         planets,
       };
     },
-
     selectPlanet(state, { payload: planetId }) {
       const { planets } = state;
       return {
@@ -27,12 +27,17 @@ const { actions, reducer } = createSlice({
         selectedPlanet: planets.find(equal('id', planetId)),
       };
     },
+    changeField: (state, { payload: { name, value } }) => ({
+      ...state,
+      [name]: value,
+    }),
   },
 });
 
 export const {
   setPlanets,
   selectPlanet,
+  changeField,
 } = actions;
 
 export function loadInitialData() {

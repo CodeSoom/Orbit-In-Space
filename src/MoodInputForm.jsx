@@ -44,15 +44,16 @@ export default function PlanetContainer({
 
   return (
     <Modal open={open}>
-      <Label htmlFor="input-mood">
+      <Label htmlFor="input-comment">
         오늘의 기분을 남겨보세요 ✍️
       </Label>
       <Input
-        id="input-mood"
+        id="input-comment"
+        data-testid="input"
         type="text"
-        name="mood"
+        name="comment"
         value={value}
-        placeholder="오늘의 기분을 마음껏 작성해보세요!"
+        placeholder="언제 그런 감정을 느꼈나요?"
         onChange={handleChange}
       />
       <Button

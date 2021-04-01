@@ -1,10 +1,12 @@
 import { useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styled from '@emotion/styled';
 
 import MoodInputForm from './MoodInputForm';
+
+import { changeField } from './redux/slice';
 
 import { get } from './utils';
 
@@ -68,6 +70,8 @@ const Button = styled.button({
 });
 
 export default function PlanetContainer() {
+  const dispatch = useDispatch();
+
   const [isOpen, setOpen] = useState(false);
 
   const selectedPlanet = useSelector(get('selectedPlanet'));
@@ -78,6 +82,10 @@ export default function PlanetContainer() {
   //   mood: '행복',
   //   description: '내일도 행복하길 바랄게요!💘',
   // };
+
+  const handleChnageField = ({ name, value }) => {
+    dispatch(changeField({ name, value }));
+  };
 
   const handleClickModal = () => {
     setOpen(!isOpen);
@@ -109,6 +117,8 @@ export default function PlanetContainer() {
           </Button>
           <MoodInputForm
             open={isOpen}
+            name="comment"
+            onChange={handleChnageField}
             onClick={handleClickModal}
           />
         </ButtonWrapper>

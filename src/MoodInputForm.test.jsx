@@ -15,7 +15,7 @@ describe('MoodInputForm', () => {
     return render((
       <MoodInputForm
         label="오늘의 기분을 남겨보세요"
-        name="mood"
+        name="comment"
         value=""
         onChange={handleChange}
         onClick={handleClickSubmit}
@@ -30,14 +30,14 @@ describe('MoodInputForm', () => {
   });
 
   it('listens change events', () => {
-    const { getByLabelText } = renderMoodInputForm();
+    const { getByTestId } = renderMoodInputForm();
 
-    fireEvent.change(getByLabelText(/오늘의 기분을 남겨보세요/), {
+    fireEvent.change(getByTestId('input'), {
       target: { value: '맛있는 점심을 먹어서 행복했다!' },
     });
 
     expect(handleChange).toBeCalledWith({
-      name: 'mood', value: '맛있는 점심을 먹어서 행복했다!',
+      name: 'comment', value: '맛있는 점심을 먹어서 행복했다!',
     });
   });
 
