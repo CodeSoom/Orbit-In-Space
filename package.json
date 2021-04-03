@@ -18,6 +18,7 @@
         "coverage": "jest --coverage"
     },
     "author": "canary4651",
+    "homepgae": "https://codesoom.github.io/project-react-3-canary4651/",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.12.10",
