@@ -26,7 +26,7 @@ describe('HomePage', () => {
   it('renders title', () => {
     const { container } = renderHomePage();
 
-    expect(container).toHaveTextContent(/오늘은 어떤 하루였나요?/);
+    expect(container).toHaveTextContent('오늘은 어떤 하루였나요?');
   });
 
   it('listens change event and navigates to the planets page', () => {

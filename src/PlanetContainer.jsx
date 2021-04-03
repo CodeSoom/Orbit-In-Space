@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styled from '@emotion/styled';
 
+import Comment from './Comment';
 import MoodInputForm from './MoodInputForm';
 
 import { changeField } from './redux/slice';
@@ -33,7 +34,7 @@ const Content = styled.div({
 });
 
 const Image = styled.img({
-  margin: '2em 0',
+  margin: '3em 0',
   width: '200px',
   height: '200px',
   [mq.desktop]: {
@@ -45,6 +46,7 @@ const Image = styled.img({
 const Description = styled.div({
   fontSize: '1.2em',
   fontWeight: 300,
+  marginBottom: '2em',
 });
 
 const ButtonWrapper = styled.div({
@@ -75,6 +77,7 @@ export default function PlanetContainer() {
   const [isOpen, setOpen] = useState(false);
 
   const selectedPlanet = useSelector(get('selectedPlanet'));
+  const comment = useSelector(get('comment'));
 
   // TODO: delete this! (테스트 용으로만)
   // const selectedPlanet = {
@@ -82,6 +85,7 @@ export default function PlanetContainer() {
   //   mood: '행복',
   //   description: '내일도 행복하길 바랄게요!💘',
   // };
+  // const comment = '오늘은 점심이 맛있어서 좋았다.';
 
   const handleChnageField = ({ name, value }) => {
     dispatch(changeField({ name, value }));
@@ -108,6 +112,9 @@ export default function PlanetContainer() {
           alt=""
         />
         <Description>{selectedPlanet.description}</Description>
+        {!isOpen && comment ? (
+          <Comment comment={comment} />
+        ) : null}
         <ButtonWrapper>
           <Button
             type="button"

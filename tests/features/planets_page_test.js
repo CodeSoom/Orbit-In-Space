@@ -34,5 +34,12 @@ Scenario('Visit the planets page', ({ I }) => {
 
   I.see('오늘의 기분을 남겨보세요');
 
+  I.fillField('오늘의 기분을 남겨보세요', '행복하다');
+
   I.click('확인');
+
+  // planets/:id page
+
+  I.see('오늘의 코멘트');
+  I.see('행복하다');
 });
