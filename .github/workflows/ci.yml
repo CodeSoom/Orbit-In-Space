@@ -18,4 +18,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    - name: Lint
+      run: npx eslint --ext .js,.jsx .
+    - name: Run unit tests
+      run: npx jest --ci --coverage --detectOpenHandles    
     - run: npm run build
+    - name: Run E2E tests
+      run: npm run test:ci-e2e
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
