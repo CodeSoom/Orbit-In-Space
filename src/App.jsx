@@ -18,7 +18,7 @@ const Container = styled.div({
 export default function App() {
   return (
     <Container>
-      <BrowserRouter basename={process.env.BASE_URL}>
+      <BrowserRouter>
         <Router />
       </BrowserRouter>
     </Container>

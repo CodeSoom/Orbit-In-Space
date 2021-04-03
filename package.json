@@ -7,7 +7,6 @@
         "start": "webpack-dev-server",
         "serve": "serve dist -l 8080",
         "build": "webpack",
-        "deploy": "gh-pages --remote upstream -d dist",
         "lint": "eslint --fix --ext .js,.jsx .",
         "codeceptjs": "codeceptjs run --steps",
         "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
@@ -16,10 +15,7 @@
         "test:unit": "jest",
         "test:ci-e2e": "concurrently -k -s first 'npm run serve -- -s' 'sleep 5 && npm run codeceptjs:headless'",
         "watch": "jest --watchAll",
-        "coverage": "jest --coverage",
-        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples",
-        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples",
-        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
+        "coverage": "jest --coverage"
     },
     "author": "canary4651",
     "license": "ISC",
