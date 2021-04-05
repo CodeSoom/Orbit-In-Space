@@ -12,6 +12,10 @@ import { images } from './assets';
 
 import { get } from './utils';
 
+const UL = styled.ul({
+  textAlign: 'center',
+});
+
 const List = styled.li({
   display: 'inline-flex',
   margin: '1em .5em 0',
@@ -57,7 +61,7 @@ export default function PlanetsContainer({ onClickPlanet }) {
 
   return (
     <>
-      <ul>
+      <UL>
         {planets.map((planet) => (
           <List key={planet.id}>
             <SelectButton
@@ -75,7 +79,7 @@ export default function PlanetsContainer({ onClickPlanet }) {
             </SelectButton>
           </List>
         ))}
-      </ul>
+      </UL>
     </>
   );
 }
