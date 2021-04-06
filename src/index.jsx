@@ -11,6 +11,5 @@ import './assets/css/global.css';
 ReactDOM.render((
   <Provider store={store}>
     <App />
-    ,
   </Provider>
 ), document.getElementById('app'));
