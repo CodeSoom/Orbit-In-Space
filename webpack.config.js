@@ -2,12 +2,12 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (env, argv) => ({
+module.exports = (env) => ({
   entry: path.resolve(__dirname, 'src/index.jsx'),
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle-[hash].js',
-    publicPath: argv.mode === 'production' ? '/project-react-3-canary4651' : '/',
+    publicPath: env === 'production' ? '/project-react-3-canary4651' : '/',
   },
   module: {
     rules: [

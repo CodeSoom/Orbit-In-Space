@@ -6,8 +6,8 @@
     "scripts": {
         "start": "webpack-dev-server",
         "serve": "serve dist -l 8080",
-        "build": "webpack --mode production --config webpack.config.js",
-        "build:dev": "webpack --mode development --config webpack.config.js",
+        "build": "webpack --env production",
+        "build:dev": "webpack --env development",
         "lint": "eslint --fix --ext .js,.jsx .",
         "codeceptjs": "codeceptjs run --steps",
         "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
