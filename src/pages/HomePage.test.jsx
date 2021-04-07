@@ -29,12 +29,12 @@ describe('HomePage', () => {
     expect(container).toHaveTextContent('오늘은 어떤 하루였나요?');
   });
 
-  it('listens change event and navigates to the planets page', () => {
+  it('listens change event and navigates to the login page', () => {
     const { getByText } = renderHomePage();
 
-    fireEvent.click(getByText('선택하기'));
+    fireEvent.click(getByText('로그인'));
 
     expect(history.push).toBeCalled();
-    expect(history.push).toBeCalledWith('/planets');
+    expect(history.push).toBeCalledWith('/login');
   });
 });

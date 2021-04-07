@@ -5,5 +5,5 @@ Scenario('Visit the home page', ({ I }) => {
 
   I.see('오늘은 어떤 하루였나요?');
 
-  I.click('선택하기');
+  I.click('로그인');
 });

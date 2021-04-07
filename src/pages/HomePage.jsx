@@ -35,7 +35,7 @@ const Button = styled.button({
 
 export default function HomePage({ history }) {
   const handleClick = () => {
-    history.push('/planets');
+    history.push('/login');
   };
 
   return (
@@ -46,7 +46,7 @@ export default function HomePage({ history }) {
           type="button"
           onClick={handleClick}
         >
-          선택하기
+          로그인
         </Button>
       </ButtonWrapper>
     </Container>
