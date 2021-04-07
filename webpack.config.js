@@ -7,7 +7,7 @@ module.exports = (env) => ({
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle-[hash].js',
-    publicPath: env === 'production' ? '/project-react-3-canary4651/' : '/',
+    publicPath: env === 'production' ? '/project-react-3-canary4651' : '/',
   },
   module: {
     rules: [

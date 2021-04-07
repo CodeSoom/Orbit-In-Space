@@ -12,6 +12,10 @@ const { actions, reducer } = createSlice({
     planets: [],
     selectedPlanet: null,
     comment: '',
+    loginFields: {
+      email: '',
+      password: '',
+    },
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
@@ -31,6 +35,15 @@ const { actions, reducer } = createSlice({
       ...state,
       [name]: value,
     }),
+    changeLoginField(state, { payload: { name, value } }) {
+      return {
+        ...state,
+        loginFields: {
+          ...state.loginFields,
+          [name]: value,
+        },
+      };
+    },
   },
 });
 
@@ -38,6 +51,7 @@ export const {
   setPlanets,
   selectPlanet,
   changeField,
+  changeLoginField,
 } = actions;
 
 export function loadInitialData() {

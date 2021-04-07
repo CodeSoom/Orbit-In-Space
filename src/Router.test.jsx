@@ -24,6 +24,10 @@ describe('Router', () => {
         { id: 1, mood: '행복' },
       ],
       selectedPlanet: { id: 1, mood: '행복' },
+      loginFields: {
+        email: 'test@test',
+        password: '1234',
+      },
     }));
   });
 
@@ -40,6 +44,14 @@ describe('Router', () => {
       const { container } = renderRouter({ path: '/' });
 
       expect(container).toHaveTextContent('오늘은 어떤 하루였나요?');
+    });
+  });
+
+  context('with path /login', () => {
+    it('renders the login Page', () => {
+      const { container } = renderRouter({ path: '/login' });
+
+      expect(container).toHaveTextContent('로그인해주세요');
     });
   });
 
