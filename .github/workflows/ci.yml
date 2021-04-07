@@ -40,7 +40,6 @@ jobs:
     - name: Bulid
       run: |
         npm run build
-        cp -r static dist/
         cp dist/index.html dist/404.html
 
     - name: Deploy
