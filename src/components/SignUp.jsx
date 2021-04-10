@@ -26,7 +26,7 @@ const Button = styled.button({
   color: colors.black,
 });
 
-export default function Login({ fields, onChange, onSubmit }) {
+export default function SignUp({ fields, onChange, onSubmit }) {
   const { email, password } = fields;
 
   const isValid = email && password;
@@ -36,7 +36,7 @@ export default function Login({ fields, onChange, onSubmit }) {
       <TextInputField
         label="이메일"
         name="email"
-        note="@를 포함해서 입력해주세요"
+        note="@를 포함해서 작성해주세요"
         value={email}
         placeholder="이메일을 입력해주세요"
         onChange={onChange}
@@ -45,6 +45,7 @@ export default function Login({ fields, onChange, onSubmit }) {
         label="비밀번호"
         type="password"
         name="password"
+        note="비밀번호는 식별용으로만 사용됩니다."
         value={password}
         maxLength={4}
         placeholder="숫자 4자리를 입력해주세요"
@@ -56,7 +57,7 @@ export default function Login({ fields, onChange, onSubmit }) {
             type="button"
             onClick={onSubmit}
           >
-            로그인
+            가입하기
           </Button>
         </ButtonWrapper>
       ) : null}

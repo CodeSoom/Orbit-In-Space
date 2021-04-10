@@ -47,11 +47,11 @@ describe('PlanetContainer', () => {
   });
 
   it('listens change event', () => {
-    const { getByText, getByTestId } = renderPlanetContainer();
+    const { getByText, getByLabelText } = renderPlanetContainer();
 
     fireEvent.click(getByText('기록하기'));
 
-    fireEvent.change(getByTestId('input'), {
+    fireEvent.change(getByLabelText(/오늘의 기분을 남겨보세요/), {
       target: { value: '맛있는 점심을 먹어서 행복했다!' },
     });
 

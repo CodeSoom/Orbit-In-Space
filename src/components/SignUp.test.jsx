@@ -1,8 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import Login from './Login';
+import SignUp from './SignUp';
 
-describe('Login', () => {
+describe('SignUp', () => {
   const handleChange = jest.fn();
   const handleSubmit = jest.fn();
 
@@ -11,9 +11,9 @@ describe('Login', () => {
     handleSubmit.mockClear();
   });
 
-  function renderLogin({ email, password } = {}) {
+  function renderSignUp({ email, password } = {}) {
     return render((
-      <Login
+      <SignUp
         fields={{ email, password }}
         onChange={handleChange}
         onSubmit={handleSubmit}
@@ -25,7 +25,7 @@ describe('Login', () => {
     const email = 'test@test.com';
     const password = '1234';
 
-    const { getByLabelText } = renderLogin({ email, password });
+    const { getByLabelText } = renderSignUp({ email, password });
 
     const controls = [
       { label: '이메일', value: email },
@@ -39,11 +39,11 @@ describe('Login', () => {
   });
 
   it('listens change events', () => {
-    const { getByLabelText } = renderLogin();
+    const { getByLabelText } = renderSignUp();
 
     const controls = [
       { label: '이메일', name: 'email', value: 'tester@example.com' },
-      { label: '비밀번호', name: 'password', value: '0000' },
+      { label: '비밀번호', name: 'password', value: '1234' },
     ];
 
     controls.forEach(({ label, name, value }) => {
@@ -54,13 +54,13 @@ describe('Login', () => {
   });
 
   context('with email and password', () => {
-    it('renders “로그인” button', () => {
+    it('renders “가입하기” button', () => {
       const email = 'test@test.com';
       const password = '1234';
 
-      const { getByText } = renderLogin({ email, password });
+      const { getByText } = renderSignUp({ email, password });
 
-      fireEvent.click(getByText('로그인'));
+      fireEvent.click(getByText('가입하기'));
 
       expect(handleSubmit).toBeCalled();
     });
@@ -68,9 +68,9 @@ describe('Login', () => {
 
   context('without email and password', () => {
     it("dosen't renders button", () => {
-      const { queryByText } = renderLogin();
+      const { queryByText } = renderSignUp();
 
-      expect(queryByText('로그인')).toBeNull();
+      expect(queryByText('가입하기')).toBeNull();
     });
   });
 });
