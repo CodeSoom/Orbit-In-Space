@@ -2,11 +2,11 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import LoginContainer from './LoginContainer';
+import SignUpContainer from './SignUpContainer';
 
-describe('LoginContainer', () => {
+describe('SignUpContainer', () => {
   const dispatch = jest.fn();
-  const handleLoginSubmit = jest.fn();
+  const handleSignUpSubmit = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -21,21 +21,21 @@ describe('LoginContainer', () => {
     }));
   });
 
-  function renderLoginContainer() {
+  function renderSignUpContainer() {
     return render((
-      <LoginContainer onSubmit={handleLoginSubmit} />
+      <SignUpContainer onSubmit={handleSignUpSubmit} />
     ));
   }
 
   it('renders input controls', () => {
-    const { getByLabelText } = renderLoginContainer();
+    const { getByLabelText } = renderSignUpContainer();
 
     expect(getByLabelText('이메일').value).toBe('test@test.com');
     expect(getByLabelText('비밀번호').value).toBe('1234');
   });
 
   it('listens change events', () => {
-    const { getByLabelText } = renderLoginContainer();
+    const { getByLabelText } = renderSignUpContainer();
 
     fireEvent.change(getByLabelText('이메일'), {
       target: { value: 'new email' },

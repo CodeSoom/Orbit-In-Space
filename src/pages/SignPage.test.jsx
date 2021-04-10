@@ -2,9 +2,9 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import LoginPage from './LoginPage';
+import SignPage from './SignPage';
 
-describe('LoginPage', () => {
+describe('SignPage', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       loginFields: {
@@ -15,13 +15,13 @@ describe('LoginPage', () => {
   });
 
   it('renders title', () => {
-    const { container } = render(<LoginPage />);
+    const { container } = render(<SignPage />);
 
-    expect(container).toHaveTextContent('로그인해주세요');
+    expect(container).toHaveTextContent('회원가입해주세요');
   });
 
   it('renders input control', () => {
-    const { getByLabelText } = render(<LoginPage />);
+    const { getByLabelText } = render(<SignPage />);
 
     expect(getByLabelText('이메일')).not.toBeNull();
   });

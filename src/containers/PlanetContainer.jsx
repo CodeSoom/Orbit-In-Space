@@ -125,7 +125,7 @@ export default function PlanetContainer() {
           <MoodInputForm
             open={isOpen}
             name="comment"
-            onChange={handleChnageField}
+            onChangeComment={handleChnageField}
             onClick={handleClickModal}
           />
         </ButtonWrapper>

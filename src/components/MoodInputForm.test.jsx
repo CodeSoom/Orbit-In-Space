@@ -17,7 +17,7 @@ describe('MoodInputForm', () => {
         label="오늘의 기분을 남겨보세요"
         name="comment"
         value=""
-        onChange={handleChange}
+        onChangeComment={handleChange}
         onClick={handleClickSubmit}
       />
     ));
@@ -30,9 +30,9 @@ describe('MoodInputForm', () => {
   });
 
   it('listens change events', () => {
-    const { getByTestId } = renderMoodInputForm();
+    const { getByLabelText } = renderMoodInputForm();
 
-    fireEvent.change(getByTestId('input'), {
+    fireEvent.change(getByLabelText(/오늘의 기분을 남겨보세요/), {
       target: { value: '맛있는 점심을 먹어서 행복했다!' },
     });
 

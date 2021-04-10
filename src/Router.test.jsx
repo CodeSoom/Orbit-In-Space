@@ -47,6 +47,14 @@ describe('Router', () => {
     });
   });
 
+  context('with path /sign', () => {
+    it('renders the sign Page', () => {
+      const { container } = renderRouter({ path: '/sign' });
+
+      expect(container).toHaveTextContent('회원가입해주세요');
+    });
+  });
+
   context('with path /login', () => {
     it('renders the login Page', () => {
       const { container } = renderRouter({ path: '/login' });

@@ -2,20 +2,9 @@ import styled from '@emotion/styled';
 
 import Modal from './Modal';
 
+import TextInputField from './TextInputField';
+
 import { colors } from '../designSystem';
-
-const Label = styled.label({
-  fontSize: '1.2em',
-});
-
-const Input = styled.textarea({
-  fontSize: '1em',
-  marginTop: '2em',
-  padding: '.7em',
-  width: '90%',
-  border: `1px solid ${colors.border}`,
-  borderRadius: '5px',
-});
 
 const Button = styled.button({
   fontSize: '1.4em',
@@ -30,31 +19,22 @@ const Button = styled.button({
   color: colors.black,
 });
 
-export default function PlanetContainer({
-  open, name, value, onChange, onClick,
+export default function MoodInputForm({
+  open, comment, onChangeComment, onClick,
 }) {
-  const handleChange = (event) => {
-    const { target } = event;
-    onChange({ name, value: target.value });
-  };
-
   const handleClickSubmit = () => {
     onClick();
   };
 
   return (
     <Modal open={open}>
-      <Label htmlFor="input-comment">
-        오늘의 기분을 남겨보세요 ✍️
-      </Label>
-      <Input
-        id="input-comment"
-        data-testid="input"
-        type="text"
+      <TextInputField
+        large
+        label="오늘의 기분을 남겨보세요 ✍️"
         name="comment"
-        value={value}
+        value={comment}
         placeholder="언제 그런 감정을 느꼈나요?"
-        onChange={handleChange}
+        onChange={onChangeComment}
       />
       <Button
         type="button"

@@ -24,18 +24,6 @@ const Buttons = styled.div({
   },
 });
 
-const SecondaryButton = styled.button({
-  fontSize: '1.4em',
-  fontWeight: 600,
-  display: 'block',
-  padding: '.7em 1em',
-  width: '100%',
-  borderRadius: '4px',
-  border: `2px solid ${colors.highlight}`,
-  backgroundColor: 'transparent',
-  color: colors.highlight,
-});
-
 const PrimaryButton = styled.button({
   fontSize: '1.4em',
   fontWeight: 600,
@@ -48,33 +36,22 @@ const PrimaryButton = styled.button({
   color: colors.black,
 });
 
-export default function HomePage({ history }) {
-  const handleClickSign = () => {
-    history.push('/sign');
-  };
-
-  const handleClickLogin = () => {
-    history.push('/login');
+export default function SignUpCompletePage({ history }) {
+  const handleClick = () => {
+    history.push('/planets');
   };
 
   return (
     <Container>
-      <Title>오늘은 어떤 하루였나요?</Title>
+      <Title>회원가입을 축하합니다! 🎉</Title>
       <Buttons>
-        <SecondaryButton
-          type="button"
-          onClick={handleClickSign}
-        >
-          가입하기
-        </SecondaryButton>
         <PrimaryButton
           type="button"
-          onClick={handleClickLogin}
+          onClick={handleClick}
         >
-          로그인
+          확인
         </PrimaryButton>
       </Buttons>
-
     </Container>
   );
 }
