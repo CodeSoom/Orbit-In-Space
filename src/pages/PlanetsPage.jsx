@@ -10,7 +10,7 @@ import {
   loadInitialData,
 } from '../redux/slice';
 
-import PlanetsContainer from '../PlanetsContainer';
+import PlanetsContainer from '../containers/PlanetsContainer';
 
 const Container = styled.div({
   margin: '1em 0',

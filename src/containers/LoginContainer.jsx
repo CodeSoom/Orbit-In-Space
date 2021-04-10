@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
 
-import Login from './Login';
+import Login from '../components/Login';
 
 import {
   changeLoginField,
-} from './redux/slice';
+} from '../redux/slice';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 export default function LoginContainer() {
   const history = useHistory();

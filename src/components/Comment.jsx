@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { mq, colors } from './designSystem';
+import { mq, colors } from '../designSystem';
 
 const Conatianer = styled.div({
   margin: '1.5em 0',

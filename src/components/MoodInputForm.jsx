@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import Modal from './Modal';
 
-import { colors } from './designSystem';
+import { colors } from '../designSystem';
 
 const Label = styled.label({
   fontSize: '1.2em',

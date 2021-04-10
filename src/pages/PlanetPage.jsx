@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
-import PlanetContainer from '../PlanetContainer';
+import PlanetContainer from '../containers/PlanetContainer';
 
 const Container = styled.div({
   margin: '1em 0',

@@ -4,13 +4,13 @@ import styled from '@emotion/styled';
 
 import {
   selectPlanet,
-} from './redux/slice';
+} from '../redux/slice';
 
-import { colors, mq } from './designSystem';
+import { colors, mq } from '../designSystem';
 
-import { images } from './assets';
+import { images } from '../assets';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 const UL = styled.ul({
   textAlign: 'center',

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { colors, styles } from './designSystem';
+import { colors, styles } from '../designSystem';
 
 const Box = styled.div({
   display: 'block',

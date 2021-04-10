@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import LoginContainer from '../LoginContainer';
+import LoginContainer from '../containers/LoginContainer';
 
 const Container = styled.div({
   margin: '3em 0',

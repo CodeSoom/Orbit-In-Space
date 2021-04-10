@@ -4,16 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styled from '@emotion/styled';
 
-import Comment from './Comment';
-import MoodInputForm from './MoodInputForm';
+import Comment from '../components/Comment';
+import MoodInputForm from '../components/MoodInputForm';
 
-import { changeField } from './redux/slice';
+import { changeField } from '../redux/slice';
 
-import { get } from './utils';
+import { get } from '../utils';
 
-import { images } from './assets';
+import { images } from '../assets';
 
-import { mq, colors, styles } from './designSystem';
+import { mq, colors, styles } from '../designSystem';
 
 const Container = styled.div({
   textAlign: 'center',
