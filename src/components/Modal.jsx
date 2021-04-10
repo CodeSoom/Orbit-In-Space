@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { mq, colors } from './designSystem';
+import { mq, colors } from '../designSystem';
 
 const Overlay = styled.div(({ visible }) => ({
   zIndex: 100,
