@@ -18,7 +18,7 @@ export default function LoginPage({ history }) {
 
   return (
     <Container>
-      <Title>로그인해주세요</Title>
+      <Title>로그인 해주세요</Title>
       <LoginContainer onSubmit={handleSubmit} />
     </Container>
   );

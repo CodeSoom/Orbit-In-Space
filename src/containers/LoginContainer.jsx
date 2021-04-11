@@ -18,17 +18,19 @@ export default function LoginContainer({ onSubmit }) {
     dispatch(changeLoginField({ name, value }));
   };
 
-  const handleSubmit = () => {
+  const handleLoginSubmit = () => {
     dispatch(requestLogin(loginFields));
 
     onSubmit();
   };
 
   return (
-    <Login
-      fields={loginFields}
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-    />
+    <>
+      <Login
+        fields={loginFields}
+        onChange={handleChange}
+        onSubmit={handleLoginSubmit}
+      />
+    </>
   );
 }

@@ -10,8 +10,8 @@ describe('LoginPage', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       loginFields: {
-        email: 'test@test',
-        password: '1234',
+        email: 'test@test.com',
+        password: '123456',
       },
     }));
   });
@@ -19,12 +19,12 @@ describe('LoginPage', () => {
   it('renders title', () => {
     const { container } = render(<LoginPage />);
 
-    expect(container).toHaveTextContent('로그인해주세요');
+    expect(container).toHaveTextContent('로그인 해주세요');
   });
+});
 
-  it('renders input control', () => {
-    const { getByLabelText } = render(<LoginPage />);
+it('renders input control', () => {
+  const { getByLabelText } = render(<LoginPage />);
 
-    expect(getByLabelText('이메일')).not.toBeNull();
-  });
+  expect(getByLabelText('이메일')).not.toBeNull();
 });

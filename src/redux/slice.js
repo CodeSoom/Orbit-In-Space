@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchPlanets,
   postLogin,
+  postSignUp,
 } from '../services/api';
 
 import { equal } from '../utils';
@@ -13,7 +14,6 @@ const { actions, reducer } = createSlice({
     planets: [],
     selectedPlanet: null,
     comment: '',
-    loggedIn: false,
     loginFields: {
       email: '',
       password: '',
@@ -37,12 +37,6 @@ const { actions, reducer } = createSlice({
       ...state,
       [name]: value,
     }),
-    setLoggedIn(state, { payload: loggedIn }) {
-      return {
-        ...state,
-        loggedIn,
-      };
-    },
     changeLoginField(state, { payload: { name, value } }) {
       return {
         ...state,
@@ -59,7 +53,6 @@ export const {
   setPlanets,
   selectPlanet,
   changeField,
-  setLoggedIn,
   changeLoginField,
 } = actions;
 
@@ -68,6 +61,15 @@ export function loadInitialData() {
     const planets = fetchPlanets();
 
     dispatch(setPlanets(planets));
+  };
+}
+
+export function requestSignUp() {
+  return async (dispatch, getState) => {
+    const { loginFields } = getState();
+    const { email, password } = loginFields;
+
+    await postSignUp({ email, password });
   };
 }
 

@@ -6,6 +6,7 @@ import SignUp from '../components/SignUp';
 
 import {
   changeLoginField,
+  requestSignUp,
 } from '../redux/slice';
 
 import { get } from '../utils';
@@ -22,7 +23,7 @@ export default function SignUpContainer() {
   };
 
   const handleSubmit = () => {
-    // dispatch(requestSignUp());
+    dispatch(requestSignUp());
     history.push('/sign-complete');
   };
 

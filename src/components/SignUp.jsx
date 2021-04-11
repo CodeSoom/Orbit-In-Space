@@ -47,8 +47,8 @@ export default function SignUp({ fields, onChange, onSubmit }) {
         name="password"
         note="비밀번호는 식별용으로만 사용됩니다."
         value={password}
-        maxLength={4}
-        placeholder="숫자 4자리를 입력해주세요"
+        maxLength={6}
+        placeholder="숫자 6자리를 입력해주세요"
         onChange={onChange}
       />
       {isValid ? (
