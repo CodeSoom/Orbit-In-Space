@@ -10,6 +10,7 @@ import Router from './Router';
 
 jest.mock('react-redux');
 jest.mock('./assets');
+jest.mock('./services/firebase');
 
 describe('Router', () => {
   const dispatch = jest.fn();

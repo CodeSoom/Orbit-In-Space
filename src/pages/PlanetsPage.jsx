@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { useHistory } from 'react-router-dom';
-
 import styled from '@emotion/styled';
 
 import {
@@ -20,9 +18,7 @@ const Title = styled.h1({
   fontSize: '1.5em',
 });
 
-export default function PlanetsPage() {
-  const history = useHistory();
-
+export default function PlanetsPage({ history }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
