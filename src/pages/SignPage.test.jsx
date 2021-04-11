@@ -19,7 +19,7 @@ describe('SignPage', () => {
   it('renders title', () => {
     const { container } = render(<SignPage />);
 
-    expect(container).toHaveTextContent('회원가입해주세요');
+    expect(container).toHaveTextContent('회원가입 해주세요');
   });
 
   it('renders input control', () => {

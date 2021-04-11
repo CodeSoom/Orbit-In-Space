@@ -52,7 +52,7 @@ describe('Router', () => {
     it('renders the sign Page', () => {
       const { container } = renderRouter({ path: '/sign' });
 
-      expect(container).toHaveTextContent('회원가입해주세요');
+      expect(container).toHaveTextContent('회원가입 해주세요');
     });
   });
 
@@ -60,7 +60,7 @@ describe('Router', () => {
     it('renders the login Page', () => {
       const { container } = renderRouter({ path: '/login' });
 
-      expect(container).toHaveTextContent('로그인해주세요');
+      expect(container).toHaveTextContent('로그인 해주세요');
     });
   });
 

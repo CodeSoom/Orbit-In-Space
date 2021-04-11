@@ -2,7 +2,6 @@ import reducer, {
   setPlanets,
   selectPlanet,
   changeField,
-  setLoggedIn,
   changeLoginField,
 } from './slice';
 
@@ -14,7 +13,6 @@ describe('reducer', () => {
       planets: [],
       selectedPlanet: null,
       comment: '',
-      loggedIn: false,
       loginFields: {
         email: '',
         password: '',
@@ -68,18 +66,6 @@ describe('reducer', () => {
       }));
 
       expect(state.comment).toEqual('점심이 맛있어서 행복하다');
-    });
-  });
-
-  describe('setLoggedIn', () => {
-    it('change loggedIn', () => {
-      const initialState = {
-        loggedIn: false,
-      };
-
-      const state = reducer(initialState, setLoggedIn(true));
-
-      expect(state.loggedIn).toBe(true);
     });
   });
 

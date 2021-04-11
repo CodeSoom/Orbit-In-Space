@@ -38,7 +38,7 @@ const Note = styled.div({
 });
 
 export default function TextInputField({
-  label, note, large, type = 'text', name, value, maxLength, onChange,
+  label, note, large, type = 'text', placeholder, name, value, maxLength, onChange,
 }) {
   const id = `input-${name}`;
 
@@ -61,6 +61,7 @@ export default function TextInputField({
           id={id}
           name={name}
           value={value}
+          placeholder={placeholder}
           onChange={handleChange}
         />
       ) : (
@@ -70,6 +71,7 @@ export default function TextInputField({
           name={name}
           value={value}
           maxLength={maxLength}
+          placeholder={placeholder}
           onChange={handleChange}
         />
       )}
