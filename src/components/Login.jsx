@@ -46,8 +46,8 @@ export default function Login({ fields, onChange, onSubmit }) {
         type="password"
         name="password"
         value={password}
-        maxLength={4}
-        placeholder="숫자 4자리를 입력해주세요"
+        maxLength={6}
+        placeholder="숫자 6자리를 입력해주세요"
         onChange={onChange}
       />
       {isValid ? (

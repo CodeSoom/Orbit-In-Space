@@ -14,7 +14,7 @@ const Title = styled.h1({
 export default function SignPage() {
   return (
     <Container>
-      <Title>회원가입해주세요</Title>
+      <Title>회원가입 해주세요</Title>
       <SignUpContainer />
     </Container>
   );

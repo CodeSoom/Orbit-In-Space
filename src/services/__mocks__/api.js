@@ -2,5 +2,5 @@ export function getPlanets(planetsId) {
   return { id: planetsId };
 }
 
-// TODO: delete this
-export default {};
+export const postSignup = jest.fn();
+export const postLogin = jest.fn();
