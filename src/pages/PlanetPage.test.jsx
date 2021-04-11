@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import PlanetPage from './PlanetPage';
 
 jest.mock('../assets');
+jest.mock('../services/api');
 
 describe('PlanetPage', () => {
   beforeEach(() => {

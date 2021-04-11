@@ -11,11 +11,15 @@ const Title = styled.h1({
   textAlign: 'center',
 });
 
-export default function LoginPage() {
+export default function LoginPage({ history }) {
+  const handleSubmit = () => {
+    history.push('/planets');
+  };
+
   return (
     <Container>
       <Title>로그인해주세요</Title>
-      <LoginContainer />
+      <LoginContainer onSubmit={handleSubmit} />
     </Container>
   );
 }

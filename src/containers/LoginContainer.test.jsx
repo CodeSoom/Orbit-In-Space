@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoginContainer from './LoginContainer';
 
+jest.mock('../services/api');
+
 describe('LoginContainer', () => {
   const dispatch = jest.fn();
   const handleLoginSubmit = jest.fn();

@@ -1,8 +1,11 @@
+import { authService } from './firebase';
+
 import planets from '../data/planets';
 
 export function fetchPlanets() {
   return planets;
 }
 
-// TODO: delete this!
-export default {};
+export const postLogin = async ({ email, password }) => {
+  await authService.signInWithEmailAndPassword(email, password);
+};

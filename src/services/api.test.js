@@ -4,6 +4,8 @@ import {
 
 import PLANETS from '../../fixtures/planets';
 
+jest.mock('./firebase');
+
 describe('api', () => {
   const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({

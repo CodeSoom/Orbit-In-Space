@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import SignPage from './SignPage';
 
+jest.mock('../services/api');
+
 describe('SignPage', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({

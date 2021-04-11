@@ -1,18 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useHistory } from 'react-router-dom';
-
 import Login from '../components/Login';
 
 import {
   changeLoginField,
+  requestLogin,
 } from '../redux/slice';
 
 import { get } from '../utils';
 
-export default function LoginContainer() {
-  const history = useHistory();
-
+export default function LoginContainer({ onSubmit }) {
   const dispatch = useDispatch();
 
   const loginFields = useSelector(get('loginFields'));
@@ -22,8 +19,9 @@ export default function LoginContainer() {
   };
 
   const handleSubmit = () => {
-    // dispatch(requestLogin());
-    history.push('/planets');
+    dispatch(requestLogin(loginFields));
+
+    onSubmit();
   };
 
   return (
