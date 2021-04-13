@@ -59,4 +59,4 @@ jobs:
       with:
         branch: gh-pages
         folder: dist
-        cname: space-orbit.com
+        cname: space-obit.com
