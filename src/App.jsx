@@ -18,7 +18,7 @@ const Container = styled.div({
 export default function App() {
   return (
     <Container>
-      <BrowserRouter basename="/project-react-3-canary4651/">
+      <BrowserRouter>
         <Router />
       </BrowserRouter>
     </Container>
