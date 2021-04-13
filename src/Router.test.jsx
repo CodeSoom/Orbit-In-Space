@@ -68,7 +68,7 @@ describe('Router', () => {
     it('renders the planets Page', () => {
       const { container } = renderRouter({ path: '/planets' });
 
-      expect(container).toHaveTextContent('행성을 클릭해주세요');
+      expect(container).toHaveTextContent('행성을 선택하세요');
     });
   });
 

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { images } from '../assets';
 
 import { colors, styles } from '../designSystem';
 
@@ -9,6 +10,11 @@ const Container = styled.div({
 const Title = styled.h1({
   fontSize: '1.5em',
   textAlign: 'center',
+});
+
+const Image = styled.img({
+  marginTop: '3.5em',
+  width: '100%',
 });
 
 const Buttons = styled.div({
@@ -59,7 +65,11 @@ export default function HomePage({ history }) {
 
   return (
     <Container>
-      <Title>오늘은 어떤 하루였나요?</Title>
+      <Title>오늘은 어떤 하루였나요? 🚀</Title>
+      <Image
+        src={images.home}
+        alt=""
+      />
       <Buttons>
         <SecondaryButton
           type="button"

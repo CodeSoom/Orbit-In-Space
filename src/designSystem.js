@@ -10,8 +10,9 @@ export const colors = {
   black: '#000',
   white: '#FFF',
   border: '#888888',
-  highlight: '#3082F6',
+  highlight: '#45E253',
   placeholder: '#888888',
+  gray: '#DDD',
   background: '#202020',
 };
 

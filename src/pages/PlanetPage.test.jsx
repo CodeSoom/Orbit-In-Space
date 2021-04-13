@@ -6,6 +6,7 @@ import PlanetPage from './PlanetPage';
 
 jest.mock('../assets');
 jest.mock('../services/api');
+jest.mock('../services/firebase');
 
 describe('PlanetPage', () => {
   beforeEach(() => {

@@ -1,4 +1,5 @@
 export const images = {
+  home: '',
   planets: {},
 };
 
