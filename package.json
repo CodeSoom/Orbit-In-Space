@@ -19,7 +19,7 @@
         "coverage": "jest --coverage"
     },
     "author": "canary4651",
-    "homepgae": "https://space-orbit.com",
+    "homepgae": "https://space-obit.com",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.12.10",
