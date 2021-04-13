@@ -6,12 +6,12 @@ const DotEnv = require('dotenv-webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (env) => ({
+module.exports = {
   entry: path.resolve(__dirname, 'src/index.jsx'),
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle-[hash].js',
-    publicPath: env === 'production' ? '/project-react-3-canary4651/' : '/',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -62,4 +62,4 @@ module.exports = (env) => ({
     host: '0.0.0.0',
     historyApiFallback: true,
   },
-});
+};
