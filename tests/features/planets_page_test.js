@@ -15,7 +15,7 @@ const planets = [
 Scenario('Visit the planets page', ({ I }) => {
   I.amOnPage('/planets');
 
-  I.see('행성을 클릭해주세요');
+  I.see('행성을 선택하세요');
 
   planets.forEach(({ mood }) => {
     I.see(mood);

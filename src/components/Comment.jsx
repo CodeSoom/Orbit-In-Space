@@ -23,8 +23,7 @@ const Text = styled.div({
   textAlign: 'left',
   fontWeight: 300,
   border: `1px solid ${colors.highlight}`,
-  color: colors.black,
-  backgroundColor: colors.white,
+  color: colors.wihte,
   borderRadius: '5px',
   [mq.desktop]: {
     marginTop: '1em',

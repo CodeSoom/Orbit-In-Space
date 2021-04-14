@@ -16,6 +16,7 @@ import { images } from '../assets';
 import { mq, colors, styles } from '../designSystem';
 
 const Container = styled.div({
+  margin: '3em 0',
   textAlign: 'center',
 });
 

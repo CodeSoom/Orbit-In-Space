@@ -11,11 +11,12 @@ import {
 import PlanetsContainer from '../containers/PlanetsContainer';
 
 const Container = styled.div({
-  margin: '1em 0',
+  margin: '3em 0',
 });
 
 const Title = styled.h1({
   fontSize: '1.5em',
+  textAlign: 'center',
 });
 
 export default function PlanetsPage({ history }) {
@@ -32,7 +33,7 @@ export default function PlanetsPage({ history }) {
 
   return (
     <Container>
-      <Title>행성을 클릭해주세요</Title>
+      <Title>행성을 선택하세요 🪐</Title>
       <PlanetsContainer onClickPlanet={handleClickPlanet} />
     </Container>
   );

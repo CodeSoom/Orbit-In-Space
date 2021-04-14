@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 
 import 'firebase/auth';
 
+import 'firebase/firestore';
+
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
@@ -15,5 +17,6 @@ const firebaseConfig = {
 const firebaseInstance = firebase.initializeApp(firebaseConfig);
 
 export const authService = firebase.auth();
+export const dbService = firebase.firestore();
 
 export default firebaseInstance;

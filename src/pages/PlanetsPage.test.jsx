@@ -31,7 +31,7 @@ describe('PlanetsPage', () => {
   it('renders title', () => {
     const { container } = renderPlanetsPage();
 
-    expect(container).toHaveTextContent(/행성을 클릭해주세요/);
+    expect(container).toHaveTextContent(/행성을 선택하세요/);
   });
 
   it('renders planets and select buttons', () => {

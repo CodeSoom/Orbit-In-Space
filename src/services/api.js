@@ -13,3 +13,7 @@ export const postSignUp = async ({ email, password }) => {
 export const postLogin = async ({ email, password }) => {
   await authService.signInWithEmailAndPassword(email, password);
 };
+
+export const logout = async () => {
+  await authService.signOut();
+};

@@ -2,6 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import HomePage from './HomePage';
 
+jest.mock('../assets');
 jest.mock('../services/api');
 
 const history = {
