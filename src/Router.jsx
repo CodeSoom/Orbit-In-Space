@@ -9,6 +9,7 @@ import SignUpCompletePage from './pages/SignUpCompletePage';
 import LoginPage from './pages/LoginPage';
 import PlanetsPage from './pages/PlanetsPage';
 import PlanetPage from './pages/PlanetPage';
+import RecordPage from './pages/RecordPage';
 
 export default function Router() {
   return (
@@ -19,6 +20,7 @@ export default function Router() {
       <Route path="/login" component={LoginPage} />
       <Route exact path="/planets" component={PlanetsPage} />
       <Route path="/planets/:id" component={PlanetPage} />
+      <Route path="/record" component={RecordPage} />
     </Switch>
   );
 }

@@ -39,7 +39,7 @@ describe('PlanetContainer', () => {
 
     expect(getByText(/오늘의 기분을 남겨보세요/)).not.toBeVisible();
 
-    fireEvent.click(getByText('기록하기'));
+    fireEvent.click(getByText('오늘의 한줄 작성하기'));
 
     expect(getByText(/오늘의 기분을 남겨보세요/)).toBeVisible();
 
@@ -51,7 +51,7 @@ describe('PlanetContainer', () => {
   it('listens change event', () => {
     const { getByText, getByLabelText } = renderPlanetContainer();
 
-    fireEvent.click(getByText('기록하기'));
+    fireEvent.click(getByText('오늘의 한줄 작성하기'));
 
     fireEvent.change(getByLabelText(/오늘의 기분을 남겨보세요/), {
       target: { value: '맛있는 점심을 먹어서 행복했다!' },

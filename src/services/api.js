@@ -19,9 +19,15 @@ export const logout = async () => {
 };
 
 export const postData = async ({ comment, selectedPlanet }) => {
-  await dbService.collection(authService.currentUser.uid).add({
+  await dbService.collection('feelings').add({
     comment,
     selectedPlanet,
     createdAt: Date.now(),
+    createdName: authService.currentUser.uid,
   });
+};
+
+export const getFeelingData = async () => {
+  // Todo: complete this!
+  // const feelingData = await dbService.collection('feelings').get();
 };

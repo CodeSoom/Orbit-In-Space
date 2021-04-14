@@ -6,6 +6,7 @@ import {
   postSignUp,
   logout,
   postData,
+  getFeelingData,
 } from '../services/api';
 
 import { equal } from '../utils';
@@ -20,12 +21,19 @@ const { actions, reducer } = createSlice({
       email: '',
       password: '',
     },
+    feelings: [],
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
       return {
         ...state,
         planets,
+      };
+    },
+    setFeelings(state, { payload: { feelings } }) {
+      return {
+        ...state,
+        feelings,
       };
     },
     selectPlanet(state, { payload: planetId }) {
@@ -56,6 +64,7 @@ export const {
   selectPlanet,
   changeField,
   changeLoginField,
+  setFeelings,
 } = actions;
 
 export function loadInitialData() {
@@ -96,6 +105,14 @@ export function addCommentsData() {
     const { comment, selectedPlanet } = initalState;
 
     await postData({ comment, selectedPlanet });
+  };
+}
+
+// todo: complete this
+export function loadFeelings() {
+  return async (dispatch) => {
+    const feelings = await getFeelingData();
+    dispatch(setFeelings(feelings));
   };
 }
 
