@@ -1,4 +1,4 @@
-import { authService } from './firebase';
+import { authService, dbService } from './firebase';
 
 import planets from '../data/planets';
 
@@ -16,4 +16,12 @@ export const postLogin = async ({ email, password }) => {
 
 export const logout = async () => {
   await authService.signOut();
+};
+
+export const postData = async ({ comment, selectedPlanet }) => {
+  await dbService.collection(authService.currentUser.uid).add({
+    comment,
+    selectedPlanet,
+    createdAt: Date.now(),
+  });
 };

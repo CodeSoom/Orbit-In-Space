@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,6 +6,7 @@ import PlanetContainer from './PlanetContainer';
 
 jest.mock('../assets');
 jest.mock('../services/api');
+jest.mock('../services/firebase');
 
 describe('PlanetContainer', () => {
   const dispatch = jest.fn();
@@ -44,7 +45,7 @@ describe('PlanetContainer', () => {
 
     fireEvent.click(getByText('확인'));
 
-    expect(getByText(/오늘의 기분을 남겨보세요/)).not.toBeVisible();
+    waitFor(() => expect(getByText(/오늘의 기분을 남겨보세요/)).not.toBeVisible());
   });
 
   it('listens change event', () => {

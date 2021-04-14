@@ -9,7 +9,6 @@ import { styles } from './designSystem';
 const Container = styled.div({
   ...styles.center,
   fontSize: '16px',
-  minHeight: '100vh',
   '@media screen and (min-width: 600px)': {
     fontSize: '20px',
   },

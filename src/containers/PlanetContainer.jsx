@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import Comment from '../components/Comment';
 import MoodInputForm from '../components/MoodInputForm';
 
-import { changeField } from '../redux/slice';
+import { addCommentsData, changeField } from '../redux/slice';
 
 import { get } from '../utils';
 
@@ -96,6 +96,12 @@ export default function PlanetContainer() {
     setOpen(!isOpen);
   };
 
+  const handleClickMood = () => {
+    dispatch(addCommentsData());
+
+    setOpen(!isOpen);
+  };
+
   return (
     <Container>
       <Title>
@@ -127,7 +133,7 @@ export default function PlanetContainer() {
             open={isOpen}
             name="comment"
             onChangeComment={handleChnageField}
-            onClick={handleClickModal}
+            onClick={handleClickMood}
           />
         </ButtonWrapper>
       </Content>

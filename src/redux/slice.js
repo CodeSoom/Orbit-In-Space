@@ -4,6 +4,8 @@ import {
   fetchPlanets,
   postLogin,
   postSignUp,
+  logout,
+  postData,
 } from '../services/api';
 
 import { equal } from '../utils';
@@ -79,6 +81,21 @@ export function requestLogin() {
     const { email, password } = loginFields;
 
     await postLogin({ email, password });
+  };
+}
+
+export function requestlogout() {
+  return async () => {
+    await logout();
+  };
+}
+
+export function addCommentsData() {
+  return async (disaptch, getState) => {
+    const initalState = getState();
+    const { comment, selectedPlanet } = initalState;
+
+    await postData({ comment, selectedPlanet });
   };
 }
 
