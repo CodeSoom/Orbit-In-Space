@@ -4,7 +4,6 @@ import { mq, colors } from '../designSystem';
 
 const Conatianer = styled.div({
   margin: '1.5em 0',
-  paddingBottom: '3em',
   [mq.desktop]: {
     margin: '3.5em 0',
   },

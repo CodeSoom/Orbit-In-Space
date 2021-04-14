@@ -72,6 +72,14 @@ describe('Router', () => {
     });
   });
 
+  context('with path /record', () => {
+    it('renders the record Page', () => {
+      const { container } = renderRouter({ path: '/record' });
+
+      expect(container).toHaveTextContent('그동안의 기록들');
+    });
+  });
+
   context('with path /planet', () => {
     it('renders the planet Page', () => {
       const selectedPlanet = { id: 1, mood: '행복' };

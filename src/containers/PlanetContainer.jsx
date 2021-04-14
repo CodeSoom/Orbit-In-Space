@@ -13,7 +13,7 @@ import { get } from '../utils';
 
 import { images } from '../assets';
 
-import { mq, colors, styles } from '../designSystem';
+import { mq, colors } from '../designSystem';
 
 const Container = styled.div({
   margin: '3em 0',
@@ -50,17 +50,30 @@ const Description = styled.div({
   marginBottom: '2em',
 });
 
-const ButtonWrapper = styled.div({
-  ...styles.center,
-  position: 'fixed',
+const Buttons = styled.div({
   paddingTop: '1em',
   paddingBottom: '1em',
   bottom: 0,
   left: 0,
   width: '100%',
+  '& button': {
+    margin: '1em 0',
+  },
 });
 
-const Button = styled.button({
+const SecondaryButton = styled.button({
+  fontSize: '1.4em',
+  fontWeight: 600,
+  display: 'block',
+  padding: '.7em 1em',
+  width: '100%',
+  borderRadius: '4px',
+  border: `2px solid ${colors.highlight}`,
+  backgroundColor: 'transparent',
+  color: colors.highlight,
+});
+
+const PrimaryButton = styled.button({
   fontSize: '1.4em',
   fontWeight: 600,
   display: 'block',
@@ -72,7 +85,7 @@ const Button = styled.button({
   color: colors.black,
 });
 
-export default function PlanetContainer() {
+export default function PlanetContainer({ onClcikRecord }) {
   const dispatch = useDispatch();
 
   const [isOpen, setOpen] = useState(false);
@@ -102,6 +115,10 @@ export default function PlanetContainer() {
     setOpen(!isOpen);
   };
 
+  const handleClickRecord = () => {
+    onClcikRecord();
+  };
+
   return (
     <Container>
       <Title>
@@ -122,20 +139,26 @@ export default function PlanetContainer() {
         {!isOpen && comment ? (
           <Comment comment={comment} />
         ) : null}
-        <ButtonWrapper>
-          <Button
+        <Buttons>
+          <SecondaryButton
             type="button"
             onClick={handleClickModal}
           >
-            기록하기
-          </Button>
+            오늘의 한줄 작성하기
+          </SecondaryButton>
+          <PrimaryButton
+            type="button"
+            onClick={handleClickRecord}
+          >
+            기록보기
+          </PrimaryButton>
           <MoodInputForm
             open={isOpen}
             name="comment"
             onChangeComment={handleChnageField}
             onClick={handleClickMood}
           />
-        </ButtonWrapper>
+        </Buttons>
       </Content>
     </Container>
   );

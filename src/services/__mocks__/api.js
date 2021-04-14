@@ -4,3 +4,5 @@ export function getPlanets(planetsId) {
 
 export const postSignup = jest.fn();
 export const postLogin = jest.fn();
+export const getData = jest.fn();
+export const postData = jest.fn();

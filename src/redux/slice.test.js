@@ -1,5 +1,6 @@
 import reducer, {
   setPlanets,
+  // setFeelings,
   selectPlanet,
   changeField,
   changeLoginField,
@@ -17,6 +18,7 @@ describe('reducer', () => {
         email: '',
         password: '',
       },
+      feelings: [],
     };
 
     it('returns initialState', () => {
@@ -37,6 +39,21 @@ describe('reducer', () => {
       expect(state.planets).toHaveLength(1);
     });
   });
+
+  // describe('setFeeelings', () => {
+  //   it('change feelings', () => {
+  //     const initialState = {
+  //       feelings: [],
+  //     };
+
+  //     const state = reducer(initialState, setFeelings([
+  //       { comment: '내일 소풍을 가서 기대된다' },
+  //       { selectedPlanet: { id: 1, mood: '행복' } },
+  //     ]));
+
+  //     expect(state.feelings.comment).toBe('내일 소풍을 가서 기대된다');
+  //   });
+  // });
 
   describe('selectPlanet', () => {
     it('changes selected planet', () => {
