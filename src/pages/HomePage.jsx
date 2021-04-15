@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import styled from '@emotion/styled';
+
 import { images } from '../assets';
 
 import { colors, styles } from '../designSystem';
+
+import { get } from '../utils';
 
 const Container = styled.div({
   margin: '3em 0',
@@ -55,6 +61,14 @@ const PrimaryButton = styled.button({
 });
 
 export default function HomePage({ history }) {
+  const isLoggedIn = useSelector(get('isLoggedIn'));
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push('/planets');
+    }
+  }, [isLoggedIn]);
+
   const handleClickSign = () => {
     history.push('/sign');
   };

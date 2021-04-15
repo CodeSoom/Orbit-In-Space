@@ -4,6 +4,7 @@ import HomePage from './HomePage';
 
 jest.mock('../assets');
 jest.mock('../services/api');
+jest.mock('../services/firebase');
 
 const history = {
   push: jest.fn(),

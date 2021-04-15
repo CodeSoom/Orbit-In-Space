@@ -27,10 +27,11 @@ Scenario('Visit the planets page', ({ I }) => {
 
   I.see('오늘은 행복 행성이네요');
 
-  I.see('기록하기');
+  I.see('오늘의 한줄 작성하기');
+  I.see('기록보기');
 
   // modal 클릭
-  I.click('기록하기');
+  I.click('오늘의 한줄 작성하기');
 
   I.see('오늘의 기분을 남겨보세요');
 

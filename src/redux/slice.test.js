@@ -1,6 +1,6 @@
 import reducer, {
   setPlanets,
-  // setFeelings,
+  setIsLoggedIn,
   selectPlanet,
   changeField,
   changeLoginField,
@@ -18,6 +18,7 @@ describe('reducer', () => {
         email: '',
         password: '',
       },
+      isLoggedIn: false,
       feelings: [],
     };
 
@@ -40,20 +41,17 @@ describe('reducer', () => {
     });
   });
 
-  // describe('setFeeelings', () => {
-  //   it('change feelings', () => {
-  //     const initialState = {
-  //       feelings: [],
-  //     };
+  describe('setIsLoggedIn', () => {
+    it('change isLoggedIn', () => {
+      const initialState = {
+        isLoggedIn: false,
+      };
 
-  //     const state = reducer(initialState, setFeelings([
-  //       { comment: '내일 소풍을 가서 기대된다' },
-  //       { selectedPlanet: { id: 1, mood: '행복' } },
-  //     ]));
+      const state = reducer(initialState, setIsLoggedIn(true));
 
-  //     expect(state.feelings.comment).toBe('내일 소풍을 가서 기대된다');
-  //   });
-  // });
+      expect(state.isLoggedIn).toBe(true);
+    });
+  });
 
   describe('selectPlanet', () => {
     it('changes selected planet', () => {
