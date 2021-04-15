@@ -14,20 +14,20 @@ export const postLogin = async ({ email, password }) => {
   await authService.signInWithEmailAndPassword(email, password);
 };
 
-export const logout = async () => {
-  await authService.signOut();
-};
+export function getAuthentication() {
+  return new Promise((resolve) => {
+    authService.onAuthStateChanged((user) => {
+      resolve(user);
+    });
+  });
+}
 
 export const postData = async ({ comment, selectedPlanet }) => {
-  await dbService.collection('feelings').add({
+  const user = authService.currentUser.uid;
+  await dbService.collection(user).add({
     comment,
     selectedPlanet,
     createdAt: Date.now(),
     createdName: authService.currentUser.uid,
   });
-};
-
-export const getFeelingData = async () => {
-  // Todo: complete this!
-  // const feelingData = await dbService.collection('feelings').get();
 };

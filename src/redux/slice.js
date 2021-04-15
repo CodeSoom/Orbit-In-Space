@@ -4,9 +4,8 @@ import {
   fetchPlanets,
   postLogin,
   postSignUp,
-  logout,
+  getAuthentication,
   postData,
-  getFeelingData,
 } from '../services/api';
 
 import { equal } from '../utils';
@@ -21,6 +20,7 @@ const { actions, reducer } = createSlice({
       email: '',
       password: '',
     },
+    isLoggedIn: false,
     feelings: [],
   },
   reducers: {
@@ -30,10 +30,10 @@ const { actions, reducer } = createSlice({
         planets,
       };
     },
-    setFeelings(state, { payload: { feelings } }) {
+    setIsLoggedIn(state, { payload: isLoggedIn }) {
       return {
         ...state,
-        feelings,
+        isLoggedIn,
       };
     },
     selectPlanet(state, { payload: planetId }) {
@@ -64,7 +64,7 @@ export const {
   selectPlanet,
   changeField,
   changeLoginField,
-  setFeelings,
+  setIsLoggedIn,
 } = actions;
 
 export function loadInitialData() {
@@ -93,9 +93,12 @@ export function requestLogin() {
   };
 }
 
-export function requestlogout() {
-  return async () => {
-    await logout();
+export function loadAuthentication() {
+  return async (dispatch) => {
+    const response = await getAuthentication();
+    const isLoggedIn = !!response;
+
+    dispatch(setIsLoggedIn(isLoggedIn));
   };
 }
 
@@ -105,14 +108,6 @@ export function addCommentsData() {
     const { comment, selectedPlanet } = initalState;
 
     await postData({ comment, selectedPlanet });
-  };
-}
-
-// todo: complete this
-export function loadFeelings() {
-  return async (dispatch) => {
-    const feelings = await getFeelingData();
-    dispatch(setFeelings(feelings));
   };
 }
 

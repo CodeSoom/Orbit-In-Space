@@ -76,7 +76,7 @@ describe('Router', () => {
     it('renders the record Page', () => {
       const { container } = renderRouter({ path: '/record' });
 
-      expect(container).toHaveTextContent('그동안의 기록들');
+      expect(container).toHaveTextContent('나의 행성들');
     });
   });
 

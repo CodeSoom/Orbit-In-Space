@@ -18,7 +18,7 @@ export default function PlanetsPage({ history }) {
 
   return (
     <Container>
-      <Title>그동안의 기록들 📝</Title>
+      <Title>나의 행성들 📝</Title>
       <RecordContainer onClickAdd={handleClickAdd} />
     </Container>
   );

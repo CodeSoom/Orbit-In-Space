@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 
-import { dbService } from '../services/firebase';
+import { dbService, authService } from '../services/firebase';
 
 import { images } from '../assets';
 
-import { colors, styles } from '../designSystem';
+import { colors } from '../designSystem';
 
 const Container = styled.div({
   margin: '2em 0',
@@ -14,38 +14,55 @@ const Container = styled.div({
 });
 
 const UL = styled.ul({
-  ...styles.center,
+  margin: '0 auto',
   textAlign: 'left',
+  fontSize: '1.2em',
+  fontWeight: 300,
 });
 
-const Li = styled.li({
-  display: 'inline-flex',
+const LI = styled.li({
+  display: 'block',
   margin: '1em 0',
 });
 
 const Content = styled.div({
-  display: 'block',
-  margin: '1em 1.5em',
+  textAlign: 'center',
+  margin: '1em 0 .5em',
+  padding: '1em',
+  border: `1px solid ${colors.highlight}`,
+  borderRadius: '5px',
 });
 
 const Image = styled.img({
-  marginRignt: '1em',
+  margin: '0 auto',
   width: '30%',
 });
 
-const Description = styled.div({
-  fontSize: '1.2em',
-  fontWeight: 300,
+const Mood = styled.div({
+  textAlign: 'left',
 });
 
-const Mood = styled.div({
+const Description = styled.div({
+  textAlign: 'left',
+});
+
+const Notice = styled.div({
   fontSize: '1.2em',
   fontWeight: 300,
+  textAlign: 'left',
+  marginBottom: '1em',
+  padding: '1em',
+  border: `1px solid ${colors.highlight}`,
+  borderRadius: '5px',
+  '& span': {
+    display: 'block',
+  },
+  '& strong': {
+    color: colors.highlight,
+  },
 });
 
 const ButtonWrapper = styled.div({
-  ...styles.center,
-  position: 'fixed',
   paddingTop: '1em',
   paddingBottom: '1em',
   bottom: 0,
@@ -69,7 +86,8 @@ export default function RecordContainer({ onClickAdd }) {
   const [feelings, setFeeligns] = useState([]);
 
   const getFeelings = async () => {
-    const feelingDatas = await dbService.collection('feelings').get();
+    const user = authService.currentUser.uid;
+    const feelingDatas = await dbService.collection(user).orderBy('createdAt').get();
     feelingDatas.forEach((document) => {
       const feelingdata = {
         ...document.data(),
@@ -83,36 +101,43 @@ export default function RecordContainer({ onClickAdd }) {
     getFeelings();
   }, []);
 
-  if (!feelings) {
-    return (
-      <p>기록이 없습니다. 먼저 오늘의 기분을 기록해주세요.</p>
-    );
-  }
-
   return (
     <Container>
-      <UL>
-        {feelings.map((feeling) => (
-          <Li key={feeling.id}>
-            <Image
-              src={images.planets[feeling.selectedPlanet.id]}
-              alt=""
-            />
-            <Content>
-              <Mood>
-                감정:
-                {' '}
-                {feeling.selectedPlanet.mood}
-              </Mood>
-              <Description>
-                기록:
-                {' '}
-                {feeling.comment}
-              </Description>
-            </Content>
-          </Li>
-        ))}
-      </UL>
+      {feelings.length ? (
+      // TODO: seperate this componet
+        <UL key={feelings.createdName}>
+          {feelings.map((feeling) => (
+            <LI key={feeling.id}>
+              <Content>
+                <Image
+                  src={images.planets[feeling.selectedPlanet.id]}
+                  alt=""
+                />
+                <Mood>
+                  감정:
+                  {' '}
+                  {feeling.selectedPlanet.mood}
+                </Mood>
+                <Description>
+                  기록:
+                  {' '}
+                  {feeling.comment}
+                </Description>
+              </Content>
+            </LI>
+          ))}
+        </UL>
+      ) : (
+        <Notice>
+          <span>기록이 없습니다.</span>
+          <span>
+            <strong>추가하기</strong>
+            {' '}
+            버튼을 눌러서
+          </span>
+          <span>오늘의 기분을 기록해주세요.</span>
+        </Notice>
+      )}
       <ButtonWrapper>
         <Button
           type="button"
