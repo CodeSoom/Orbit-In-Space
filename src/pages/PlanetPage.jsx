@@ -8,19 +8,12 @@ const Container = styled.div({
   margin: '1em 0',
 });
 
-export default function PlanetPage({ params, history }) {
+export default function PlanetPage({ params }) {
   const { id } = params || useParams();
-
-  const handleClickRecord = () => {
-    history.push('/record');
-  };
 
   return (
     <Container>
-      <PlanetContainer
-        planetId={id}
-        onClcikRecord={handleClickRecord}
-      />
+      <PlanetContainer planetId={id} />
     </Container>
   );
 }

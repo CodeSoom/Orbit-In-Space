@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
+
+import { useHistory } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
 import Comment from '../components/Comment';
 import MoodInputForm from '../components/MoodInputForm';
 
-import { addCommentsData, changeField } from '../redux/slice';
+import {
+  addCommentsData,
+  changeField,
+  setCreatedDate,
+} from '../redux/slice';
 
 import { get } from '../utils';
 
@@ -27,6 +33,12 @@ const Title = styled.h1({
     fontWeight: 700,
     color: colors.highlight,
   },
+});
+
+const Date = styled.h1({
+  fontSize: '1.3em',
+  fontWeight: 400,
+  marginTop: '1em',
 });
 
 const Content = styled.div({
@@ -85,13 +97,16 @@ const PrimaryButton = styled.button({
   color: colors.black,
 });
 
-export default function PlanetContainer({ onClcikRecord }) {
+export default function PlanetContainer() {
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
   const [isOpen, setOpen] = useState(false);
 
   const selectedPlanet = useSelector(get('selectedPlanet'));
   const comment = useSelector(get('comment'));
+  const createdDate = useSelector(get('createdDate'));
 
   // TODO: delete this! (테스트 용으로만)
   // const selectedPlanet = {
@@ -100,6 +115,10 @@ export default function PlanetContainer({ onClcikRecord }) {
   //   description: '내일도 행복하길 바랄게요!💘',
   // };
   // const comment = '오늘은 점심이 맛있어서 좋았다.';
+
+  useEffect(() => {
+    dispatch(setCreatedDate());
+  }, []);
 
   const handleChnageField = ({ name, value }) => {
     dispatch(changeField({ name, value }));
@@ -116,7 +135,7 @@ export default function PlanetContainer({ onClcikRecord }) {
   };
 
   const handleClickRecord = () => {
-    onClcikRecord();
+    history.push('/record');
   };
 
   return (
@@ -130,6 +149,7 @@ export default function PlanetContainer({ onClcikRecord }) {
         {' '}
         행성이네요
       </Title>
+      <Date>{createdDate}</Date>
       <Content>
         <Image
           src={images.planets[selectedPlanet.id]}

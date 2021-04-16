@@ -22,12 +22,13 @@ export function getAuthentication() {
   });
 }
 
-export const postData = async ({ comment, selectedPlanet }) => {
+export const postData = async ({ comment, selectedPlanet, createdDate }) => {
   const user = authService.currentUser.uid;
   await dbService.collection(user).add({
     comment,
     selectedPlanet,
+    createdDate,
     createdAt: Date.now(),
-    createdName: authService.currentUser.uid,
+    createdName: user,
   });
 };

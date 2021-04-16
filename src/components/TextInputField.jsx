@@ -27,6 +27,7 @@ const LargeInput = styled.textarea({
   marginTop: '2em',
   padding: '.7em',
   width: '90%',
+  overflow: 'hidden',
   border: `1px solid ${colors.border}`,
   borderRadius: '5px',
 });
