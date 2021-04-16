@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import moment from 'moment';
+
 import {
   fetchPlanets,
   postLogin,
@@ -16,12 +18,13 @@ const { actions, reducer } = createSlice({
     planets: [],
     selectedPlanet: null,
     comment: '',
+    feelings: [],
+    createdDate: '',
     loginFields: {
       email: '',
       password: '',
     },
     isLoggedIn: false,
-    feelings: [],
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
@@ -34,6 +37,12 @@ const { actions, reducer } = createSlice({
       return {
         ...state,
         isLoggedIn,
+      };
+    },
+    setCreatedDate(state, { payload: date }) {
+      return {
+        ...state,
+        createdDate: moment(date).format('YYYY.MM.DD'),
       };
     },
     selectPlanet(state, { payload: planetId }) {
@@ -62,6 +71,7 @@ const { actions, reducer } = createSlice({
 export const {
   setPlanets,
   selectPlanet,
+  setCreatedDate,
   changeField,
   changeLoginField,
   setIsLoggedIn,
@@ -105,9 +115,9 @@ export function loadAuthentication() {
 export function addCommentsData() {
   return async (disaptch, getState) => {
     const initalState = getState();
-    const { comment, selectedPlanet } = initalState;
+    const { comment, selectedPlanet, createdDate } = initalState;
 
-    await postData({ comment, selectedPlanet });
+    await postData({ comment, selectedPlanet, createdDate });
   };
 }
 

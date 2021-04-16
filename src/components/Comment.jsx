@@ -12,15 +12,13 @@ const Conatianer = styled.div({
 const Title = styled.h1({
   fontSize: '1.2em',
   fontWeight: 400,
-  padding: '0 .5em',
   textAlign: 'left',
+  padding: '0 .5em',
 });
 
-const Text = styled.div({
-  margin: '.8em .3em',
+const Wrapper = styled.div({
+  margin: '.8em 0',
   padding: '.8em',
-  textAlign: 'left',
-  fontWeight: 300,
   border: `1px solid ${colors.highlight}`,
   color: colors.wihte,
   borderRadius: '5px',
@@ -29,15 +27,22 @@ const Text = styled.div({
   },
 });
 
+const Text = styled.div({
+  textAlign: 'left',
+  fontWeight: 300,
+});
+
 export default function Comment({ comment }) {
   return (
     <Conatianer>
       <Title>
         오늘의 코멘트
       </Title>
-      <Text>
-        {comment}
-      </Text>
+      <Wrapper>
+        <Text>
+          {comment}
+        </Text>
+      </Wrapper>
     </Conatianer>
   );
 }

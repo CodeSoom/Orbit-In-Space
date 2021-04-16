@@ -1,6 +1,7 @@
 import reducer, {
   setPlanets,
   setIsLoggedIn,
+  setCreatedDate,
   selectPlanet,
   changeField,
   changeLoginField,
@@ -14,12 +15,13 @@ describe('reducer', () => {
       planets: [],
       selectedPlanet: null,
       comment: '',
+      feelings: [],
+      createdDate: '',
       loginFields: {
         email: '',
         password: '',
       },
       isLoggedIn: false,
-      feelings: [],
     };
 
     it('returns initialState', () => {
@@ -38,6 +40,16 @@ describe('reducer', () => {
       ];
       const state = reducer(initialState, setPlanets(planets));
       expect(state.planets).toHaveLength(1);
+    });
+  });
+
+  describe('setCreatedDate', () => {
+    it('changes planets', () => {
+      const initialState = {
+        createdDate: '',
+      };
+      const state = reducer(initialState, setCreatedDate('20200416'));
+      expect(state.createdDate).toEqual('2020.04.16');
     });
   });
 

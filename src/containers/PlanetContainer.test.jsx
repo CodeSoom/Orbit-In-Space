@@ -19,6 +19,7 @@ describe('PlanetContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       selectedPlanet: { id: 1, mood: '행복' },
       comment: '',
+      createdDate: '',
     }));
   });
 
