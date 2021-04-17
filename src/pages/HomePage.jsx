@@ -19,7 +19,7 @@ const Title = styled.h1({
 });
 
 const Image = styled.img({
-  marginTop: '3.5em',
+  marginTop: '5.5em',
   width: '100%',
 });
 
