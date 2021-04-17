@@ -12,19 +12,29 @@ import {
 
 import { equal } from '../utils';
 
+import {
+  STATUS_NONE,
+  STATUS_ERROR,
+} from '../types/status';
+
+const { log } = console;
+
 const { actions, reducer } = createSlice({
   name: 'application',
   initialState: {
     planets: [],
     selectedPlanet: null,
     comment: '',
-    feelings: [],
     createdDate: '',
+    feelings: [],
     loginFields: {
       email: '',
       password: '',
     },
     isLoggedIn: false,
+    processing: false,
+    completion: false,
+    status: STATUS_NONE,
   },
   reducers: {
     setPlanets(state, { payload: planets }) {
@@ -52,10 +62,12 @@ const { actions, reducer } = createSlice({
         selectedPlanet: planets.find(equal('id', planetId)),
       };
     },
-    changeField: (state, { payload: { name, value } }) => ({
-      ...state,
-      [name]: value,
-    }),
+    changeField(state, { payload: { name, value } }) {
+      return {
+        ...state,
+        [name]: value,
+      };
+    },
     changeLoginField(state, { payload: { name, value } }) {
       return {
         ...state,
@@ -65,6 +77,28 @@ const { actions, reducer } = createSlice({
         },
       };
     },
+    startProcess: (state) => ({
+      ...state,
+      processing: true,
+      completion: false,
+    }),
+    stopProcess: (state) => ({
+      ...state,
+      processing: false,
+      completion: false,
+    }),
+    complete: (state) => ({
+      ...state,
+      completion: true,
+    }),
+    clearStatus: (state) => ({
+      ...state,
+      status: STATUS_NONE,
+    }),
+    occurError: (state) => ({
+      ...state,
+      status: STATUS_ERROR,
+    }),
   },
 });
 
@@ -75,6 +109,11 @@ export const {
   changeField,
   changeLoginField,
   setIsLoggedIn,
+  startProcess,
+  stopProcess,
+  complete,
+  clearStatus,
+  occurError,
 } = actions;
 
 export function loadInitialData() {
@@ -87,19 +126,40 @@ export function loadInitialData() {
 
 export function requestSignUp() {
   return async (dispatch, getState) => {
+    dispatch(startProcess());
     const { loginFields } = getState();
     const { email, password } = loginFields;
 
-    await postSignUp({ email, password });
+    try {
+      await postSignUp({ email, password });
+
+      dispatch(complete());
+    } catch (e) {
+      log('ERROR', e);
+
+      dispatch(occurError());
+      dispatch(stopProcess());
+    }
   };
 }
 
 export function requestLogin() {
   return async (dispatch, getState) => {
+    dispatch(startProcess());
+
     const { loginFields } = getState();
     const { email, password } = loginFields;
 
-    await postLogin({ email, password });
+    try {
+      await postLogin({ email, password });
+
+      dispatch(complete());
+    } catch (e) {
+      log('ERROR', e);
+
+      dispatch(occurError());
+      dispatch(stopProcess());
+    }
   };
 }
 

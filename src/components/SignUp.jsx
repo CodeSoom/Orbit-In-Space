@@ -29,7 +29,7 @@ const Button = styled.button({
 export default function SignUp({ fields, onChange, onSubmit }) {
   const { email, password } = fields;
 
-  const isValid = email && password;
+  const isValid = email && password.length === 6;
 
   return (
     <>
@@ -45,10 +45,10 @@ export default function SignUp({ fields, onChange, onSubmit }) {
         label="비밀번호"
         type="password"
         name="password"
-        note="비밀번호는 식별용으로만 사용됩니다."
+        note="비밀번호는 간단한 숫자로만 설정해주세요."
         value={password}
         maxLength={6}
-        placeholder="숫자 6자리를 입력해주세요"
+        placeholder="숫자 6자리를 입력해주세요."
         onChange={onChange}
       />
       {isValid ? (
