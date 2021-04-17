@@ -77,6 +77,10 @@ const { actions, reducer } = createSlice({
         },
       };
     },
+    clearCommentField: (state) => ({
+      ...state,
+      comment: '',
+    }),
     startProcess: (state) => ({
       ...state,
       processing: true,
@@ -109,6 +113,7 @@ export const {
   changeField,
   changeLoginField,
   setIsLoggedIn,
+  clearCommentField,
   startProcess,
   stopProcess,
   complete,
@@ -173,11 +178,13 @@ export function loadAuthentication() {
 }
 
 export function addCommentsData() {
-  return async (disaptch, getState) => {
+  return async (dispatch, getState) => {
     const initalState = getState();
     const { comment, selectedPlanet, createdDate } = initalState;
 
     await postData({ comment, selectedPlanet, createdDate });
+
+    dispatch(clearCommentField());
   };
 }
 

@@ -108,14 +108,6 @@ export default function PlanetContainer() {
   const comment = useSelector(get('comment'));
   const createdDate = useSelector(get('createdDate'));
 
-  // TODO: delete this! (테스트 용으로만)
-  // const selectedPlanet = {
-  //   id: 1,
-  //   mood: '행복',
-  //   description: '내일도 행복하길 바랄게요!💘',
-  // };
-  // const comment = '오늘은 점심이 맛있어서 좋았다.';
-
   useEffect(() => {
     dispatch(setCreatedDate());
   }, []);
@@ -129,12 +121,12 @@ export default function PlanetContainer() {
   };
 
   const handleClickMood = () => {
-    dispatch(addCommentsData());
-
     setOpen(!isOpen);
   };
 
   const handleClickRecord = () => {
+    dispatch(addCommentsData());
+
     history.push('/record');
   };
 

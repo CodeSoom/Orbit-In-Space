@@ -5,6 +5,7 @@ import reducer, {
   changeField,
   changeLoginField,
   setIsLoggedIn,
+  clearCommentField,
   startProcess,
   stopProcess,
   complete,
@@ -145,13 +146,25 @@ describe('reducer', () => {
     });
   });
 
+  describe('clearCommentField', () => {
+    it('clears field of comment', () => {
+      const initialState = {
+        comment: '기분이 좋당',
+      };
+
+      const state = reducer(initialState, clearCommentField());
+      expect(state.comment).toBe('');
+    });
+  });
+
   describe('stopProcess', () => {
     it('sets not processing', () => {
-      const state = reducer({
+      const initialState = {
         processing: true,
         completion: true,
-      }, stopProcess());
+      };
 
+      const state = reducer(initialState, stopProcess());
       expect(state.processing).toBeFalsy();
       expect(state.completion).toBeFalsy();
     });
@@ -159,11 +172,12 @@ describe('reducer', () => {
 
   describe('startProcess', () => {
     it('sets processing', () => {
-      const state = reducer({
+      const initialState = {
         processing: false,
         completion: true,
-      }, startProcess());
+      };
 
+      const state = reducer(initialState, startProcess());
       expect(state.processing).toBeTruthy();
       expect(state.completion).toBeFalsy();
     });
@@ -171,30 +185,33 @@ describe('reducer', () => {
 
   describe('complete', () => {
     it('sets completion is true', () => {
-      const state = reducer({
+      const initialState = {
         completion: true,
-      }, complete());
+      };
 
+      const state = reducer(initialState, complete());
       expect(state.completion).toBeTruthy();
     });
   });
 
   describe('occurError', () => {
     it('sets status error', () => {
-      const state = reducer({
+      const initialState = {
         status: '',
-      }, occurError());
+      };
 
+      const state = reducer(initialState, occurError());
       expect(state.status).toBe(STATUS_ERROR);
     });
   });
 
   describe('clearStatus', () => {
     it('sets status with STATUS_NONE', () => {
-      const state = reducer({
+      const initialState = {
         status: STATUS_ERROR,
-      }, clearStatus());
+      };
 
+      const state = reducer(initialState, clearStatus());
       expect(state.status).toBe(STATUS_NONE);
     });
   });

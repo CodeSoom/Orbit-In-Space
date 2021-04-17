@@ -23,6 +23,9 @@ import {
 const Message = styled.div({
   fontSize: '1.5em',
   padding: '2em 0 5em',
+  '& span': {
+    display: 'block',
+  },
   '& strong': {
     fontSize: '2.5em',
     display: 'block',
@@ -47,8 +50,8 @@ function Error({ onClick }) {
     <>
       <Message>
         <strong>🙇‍♀️🙇‍♂️</strong>
-        <p>죄송합니다.</p>
-        <p>다시 회원가입 해주세요.</p>
+        <span>죄송합니다.</span>
+        <span>다시 회원가입 해주세요.</span>
       </Message>
       <PrimaryButton
         type="button"
