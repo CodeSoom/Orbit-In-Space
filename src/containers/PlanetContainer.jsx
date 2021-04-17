@@ -125,7 +125,9 @@ export default function PlanetContainer() {
   };
 
   const handleClickRecord = () => {
-    dispatch(addCommentsData());
+    if (comment) {
+      dispatch(addCommentsData());
+    }
 
     history.push('/record');
   };
