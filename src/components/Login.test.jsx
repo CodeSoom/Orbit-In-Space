@@ -48,7 +48,9 @@ describe('Login', () => {
 
     controls.forEach(({ label, name, value }) => {
       const input = getByLabelText(label);
+
       fireEvent.change(input, { target: { value } });
+
       expect(handleChange).toBeCalledWith({ name, value });
     });
   });

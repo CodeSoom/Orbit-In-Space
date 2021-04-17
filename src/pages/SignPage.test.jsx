@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 
 import SignPage from './SignPage';
 
+import {
+  STATUS_NONE,
+} from '../types/status';
+
 jest.mock('../services/api');
 
 describe('SignPage', () => {
@@ -11,20 +15,25 @@ describe('SignPage', () => {
     useSelector.mockImplementation((selector) => selector({
       loginFields: {
         email: 'test@test',
-        password: '1234',
+        password: '123456',
       },
+      status: given.status,
     }));
   });
 
-  it('renders title', () => {
-    const { container } = render(<SignPage />);
+  context('when sign up request has succeed', () => {
+    given('status', () => STATUS_NONE);
 
-    expect(container).toHaveTextContent('회원가입 해주세요');
-  });
+    it('renders title', () => {
+      const { container } = render(<SignPage />);
 
-  it('renders input control', () => {
-    const { getByLabelText } = render(<SignPage />);
+      expect(container).toHaveTextContent('회원가입 해주세요');
+    });
 
-    expect(getByLabelText('이메일')).not.toBeNull();
+    it('renders input control', () => {
+      const { getByLabelText } = render(<SignPage />);
+
+      expect(getByLabelText('이메일')).not.toBeNull();
+    });
   });
 });

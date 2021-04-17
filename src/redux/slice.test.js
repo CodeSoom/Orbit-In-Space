@@ -1,11 +1,21 @@
 import reducer, {
   setPlanets,
-  setIsLoggedIn,
-  setCreatedDate,
   selectPlanet,
+  setCreatedDate,
   changeField,
   changeLoginField,
+  setIsLoggedIn,
+  startProcess,
+  stopProcess,
+  complete,
+  clearStatus,
+  occurError,
 } from './slice';
+
+import {
+  STATUS_NONE,
+  STATUS_ERROR,
+} from '../types/status';
 
 jest.mock('../services/api');
 
@@ -15,13 +25,16 @@ describe('reducer', () => {
       planets: [],
       selectedPlanet: null,
       comment: '',
-      feelings: [],
       createdDate: '',
+      feelings: [],
       loginFields: {
         email: '',
         password: '',
       },
       isLoggedIn: false,
+      processing: false,
+      completion: false,
+      status: STATUS_NONE,
     };
 
     it('returns initialState', () => {
@@ -129,6 +142,60 @@ describe('reducer', () => {
         expect(state.loginFields.email).toBe('email');
         expect(state.loginFields.password).toBe('test');
       });
+    });
+  });
+
+  describe('stopProcess', () => {
+    it('sets not processing', () => {
+      const state = reducer({
+        processing: true,
+        completion: true,
+      }, stopProcess());
+
+      expect(state.processing).toBeFalsy();
+      expect(state.completion).toBeFalsy();
+    });
+  });
+
+  describe('startProcess', () => {
+    it('sets processing', () => {
+      const state = reducer({
+        processing: false,
+        completion: true,
+      }, startProcess());
+
+      expect(state.processing).toBeTruthy();
+      expect(state.completion).toBeFalsy();
+    });
+  });
+
+  describe('complete', () => {
+    it('sets completion is true', () => {
+      const state = reducer({
+        completion: true,
+      }, complete());
+
+      expect(state.completion).toBeTruthy();
+    });
+  });
+
+  describe('occurError', () => {
+    it('sets status error', () => {
+      const state = reducer({
+        status: '',
+      }, occurError());
+
+      expect(state.status).toBe(STATUS_ERROR);
+    });
+  });
+
+  describe('clearStatus', () => {
+    it('sets status with STATUS_NONE', () => {
+      const state = reducer({
+        status: STATUS_ERROR,
+      }, clearStatus());
+
+      expect(state.status).toBe(STATUS_NONE);
     });
   });
 });

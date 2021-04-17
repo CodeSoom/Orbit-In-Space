@@ -23,7 +23,7 @@ describe('SignUp', () => {
 
   it('renders input controls', () => {
     const email = 'test@test.com';
-    const password = '1234';
+    const password = '123456';
 
     const { getByLabelText } = renderSignUp({ email, password });
 
@@ -56,7 +56,7 @@ describe('SignUp', () => {
   context('with email and password', () => {
     it('renders “가입하기” button', () => {
       const email = 'test@test.com';
-      const password = '1234';
+      const password = '123456';
 
       const { getByText } = renderSignUp({ email, password });
 
