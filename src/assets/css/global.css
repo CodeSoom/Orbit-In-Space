@@ -7,7 +7,7 @@
 body {
     font-size: 16px;
     line-height: 1.5;
-    background: #202020;
+    background: repeat 0 0/500px url("../images/home/background.png");
     color: #FFFFFF;
     word-break: keep-all;
 }
