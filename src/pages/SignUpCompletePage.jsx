@@ -4,11 +4,24 @@ import { colors, styles } from '../designSystem';
 
 const Container = styled.div({
   margin: '3em 0',
+  textAlign: 'center',
 });
 
 const Title = styled.h1({
   fontSize: '1.5em',
-  textAlign: 'center',
+});
+
+const Message = styled.div({
+  fontSize: '1.5em',
+  marginTop: '1em',
+  padding: '2em 0 5em',
+  '& span': {
+    display: 'block',
+  },
+  '& strong': {
+    fontSize: '2.5em',
+    display: 'block',
+  },
 });
 
 const Buttons = styled.div({
@@ -44,6 +57,11 @@ export default function SignUpCompletePage({ history }) {
   return (
     <Container>
       <Title>회원가입을 축하합니다! 🎉</Title>
+      <Message>
+        <strong>👩‍🚀👨‍🚀</strong>
+        <span>나만의 우주를</span>
+        <span>같이 만들어가요!</span>
+      </Message>
       <Buttons>
         <PrimaryButton
           type="button"
