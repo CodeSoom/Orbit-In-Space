@@ -1,7 +1,12 @@
 /* eslint-disable global-require */
 
 export const images = {
-  home: require('./images/home.png'),
+  home: {
+    orbit: require('./images/home/orbit.png'),
+    text: require('./images/home/text.png'),
+    planet: require('./images/home/planet.png'),
+    background: require('./images/home/background.png'),
+  },
   planets: {
     1: require('./images/planets/planet-01.png'),
     2: require('./images/planets/planet-02.png'),

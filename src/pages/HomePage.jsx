@@ -10,17 +10,34 @@ import { colors, styles } from '../designSystem';
 import { get } from '../utils';
 
 const Container = styled.div({
-  margin: '3em 0',
+  margin: '3em auto 0',
+  textAlign: 'center',
 });
 
 const Title = styled.h1({
   fontSize: '1.5em',
-  textAlign: 'center',
+});
+
+const ImageWrapper = styled.div({
+  position: 'relative',
+  margin: '0 auto',
+});
+
+const Rotation = styled.img({
+  zIndex: 2,
+  position: 'absolute',
+  paddingTop: '35%',
+  top: 0,
+  left: '25%',
+  width: '50%',
 });
 
 const Image = styled.img({
-  marginTop: '5.5em',
-  width: '100%',
+  zIndex: 1,
+  position: 'absolute',
+  paddingTop: '10%',
+  left: '12%',
+  width: '70%',
 });
 
 const Buttons = styled.div({
@@ -80,10 +97,16 @@ export default function HomePage({ history }) {
   return (
     <Container>
       <Title>오늘은 어떤 하루였나요? 🚀</Title>
-      <Image
-        src={images.home}
-        alt=""
-      />
+      <ImageWrapper>
+        <Rotation
+          src={images.home.text}
+          alt=""
+        />
+        <Image
+          src={images.home.planet}
+          alt=""
+        />
+      </ImageWrapper>
       <Buttons>
         <SecondaryButton
           type="button"
