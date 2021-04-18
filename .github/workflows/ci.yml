@@ -40,7 +40,6 @@ jobs:
     - name: Bulid
       run: |
         npm run build
-        cp favicon.ico dist/
         cp dist/index.html dist/404.html
         cp .gitignore dist/.gitignore
 
