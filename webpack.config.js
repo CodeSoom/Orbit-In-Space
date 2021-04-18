@@ -1,10 +1,9 @@
-const webpack = require('webpack');
-
 const path = require('path');
 
-const DotEnv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.jsx'),
@@ -46,7 +45,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
-    new DotEnv(),
+    new DotenvPlugin(),
     new webpack.DefinePlugin({
       'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
       'process.env.AUTH_DOMAIN': JSON.stringify(process.env.AUTH_DOMAIN),
