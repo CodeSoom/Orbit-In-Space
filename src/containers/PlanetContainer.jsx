@@ -15,7 +15,7 @@ import {
   setCreatedDate,
 } from '../redux/slice';
 
-import { get } from '../utils';
+import { get, scrollToTop } from '../utils';
 
 import { images } from '../assets';
 
@@ -130,6 +130,8 @@ export default function PlanetContainer() {
     }
 
     history.push('/record');
+
+    scrollToTop();
   };
 
   return (
