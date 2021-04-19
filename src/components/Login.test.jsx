@@ -23,7 +23,7 @@ describe('Login', () => {
 
   it('renders input controls', () => {
     const email = 'test@test.com';
-    const password = '1234';
+    const password = '123456';
 
     const { getByLabelText } = renderLogin({ email, password });
 
@@ -43,7 +43,7 @@ describe('Login', () => {
 
     const controls = [
       { label: '이메일', name: 'email', value: 'tester@example.com' },
-      { label: '비밀번호', name: 'password', value: '0000' },
+      { label: '비밀번호', name: 'password', value: '000000' },
     ];
 
     controls.forEach(({ label, name, value }) => {
@@ -55,24 +55,14 @@ describe('Login', () => {
     });
   });
 
-  context('with email and password', () => {
-    it('renders “로그인” button', () => {
-      const email = 'test@test.com';
-      const password = '1234';
+  it('renders “로그인” button', () => {
+    const email = 'test@test.com';
+    const password = '123456';
 
-      const { getByText } = renderLogin({ email, password });
+    const { getByText } = renderLogin({ email, password });
 
-      fireEvent.click(getByText('로그인'));
+    fireEvent.click(getByText('로그인'));
 
-      expect(handleSubmit).toBeCalled();
-    });
-  });
-
-  context('without email and password', () => {
-    it("dosen't renders button", () => {
-      const { queryByText } = renderLogin();
-
-      expect(queryByText('로그인')).toBeNull();
-    });
+    expect(handleSubmit).toBeCalled();
   });
 });

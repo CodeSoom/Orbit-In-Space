@@ -51,7 +51,10 @@ function Error({ onClick }) {
       <Message>
         <strong>🙇‍♀️🙇‍♂️</strong>
         <span>죄송합니다.</span>
-        <span>다시 회원가입 해주세요.</span>
+        <span>모바일일 경우,</span>
+        <span>데스크탑으로 가입을 하거나</span>
+        <span>새로운 브라우저에서</span>
+        <span>다른 이메일로 가입해주세요</span>
       </Message>
       <PrimaryButton
         type="button"

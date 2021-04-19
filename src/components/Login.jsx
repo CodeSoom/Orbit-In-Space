@@ -24,12 +24,29 @@ const Button = styled.button({
   border: `1px solid ${colors.highlight}`,
   backgroundColor: colors.highlight,
   color: colors.black,
+  '&:disabled': {
+    borderColor: 'transparent',
+    backgroundColor: 'rgba(100, 100, 100, .5)',
+    color: 'rgba(100, 100, 100, .8)',
+  },
 });
 
 export default function Login({ fields, onChange, onSubmit }) {
   const { email, password } = fields;
 
-  const isValid = email && password;
+  function validEmail(value) {
+    const valid = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+    return valid.test(value);
+  }
+
+  function validPassword(value) {
+    const valid = /^[0-9]{6}$/;
+
+    return valid.test(value);
+  }
+
+  const isValid = validEmail(email) && validPassword(password);
 
   return (
     <>
@@ -45,21 +62,21 @@ export default function Login({ fields, onChange, onSubmit }) {
         label="비밀번호"
         type="password"
         name="password"
+        note="6자리 숫자를 입력해주세요."
         value={password}
         maxLength={6}
         placeholder="숫자 6자리를 입력해주세요"
         onChange={onChange}
       />
-      {isValid ? (
-        <ButtonWrapper>
-          <Button
-            type="button"
-            onClick={onSubmit}
-          >
-            로그인
-          </Button>
-        </ButtonWrapper>
-      ) : null}
+      <ButtonWrapper>
+        <Button
+          type="button"
+          onClick={onSubmit}
+          disabled={!isValid}
+        >
+          로그인
+        </Button>
+      </ButtonWrapper>
     </>
   );
 }

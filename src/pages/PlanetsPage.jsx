@@ -33,7 +33,7 @@ export default function PlanetsPage({ history }) {
 
   return (
     <Container>
-      <Title>행성을 선택하세요 🪐</Title>
+      <Title>오늘의 행성을 선택하세요 🪐</Title>
       <PlanetsContainer onClickPlanet={handleClickPlanet} />
     </Container>
   );

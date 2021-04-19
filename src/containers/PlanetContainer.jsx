@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
@@ -160,7 +159,7 @@ export default function PlanetContainer() {
             type="button"
             onClick={handleClickModal}
           >
-            오늘의 한줄 작성하기
+            {comment ? '수정하기' : '오늘의 한줄 작성하기' }
           </SecondaryButton>
           <PrimaryButton
             type="button"
