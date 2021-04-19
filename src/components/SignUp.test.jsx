@@ -53,24 +53,14 @@ describe('SignUp', () => {
     });
   });
 
-  context('with email and password', () => {
-    it('renders “가입하기” button', () => {
-      const email = 'test@test.com';
-      const password = '123456';
+  it('renders “가입하기” button', () => {
+    const email = 'test@test.com';
+    const password = '123456';
 
-      const { getByText } = renderSignUp({ email, password });
+    const { getByText } = renderSignUp({ email, password });
 
-      fireEvent.click(getByText('가입하기'));
+    fireEvent.click(getByText('가입하기'));
 
-      expect(handleSubmit).toBeCalled();
-    });
-  });
-
-  context('without email and password', () => {
-    it("dosen't renders button", () => {
-      const { queryByText } = renderSignUp();
-
-      expect(queryByText('가입하기')).toBeNull();
-    });
+    expect(handleSubmit).toBeCalled();
   });
 });

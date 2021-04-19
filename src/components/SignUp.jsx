@@ -24,12 +24,29 @@ const Button = styled.button({
   border: `1px solid ${colors.highlight}`,
   backgroundColor: colors.highlight,
   color: colors.black,
+  '&:disabled': {
+    borderColor: 'transparent',
+    backgroundColor: 'rgba(100, 100, 100, .5)',
+    color: 'rgba(100, 100, 100, .8)',
+  },
 });
 
 export default function SignUp({ fields, onChange, onSubmit }) {
   const { email, password } = fields;
 
-  const isValid = email && password.length === 6;
+  function validEmail(value) {
+    const valid = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+    return valid.test(value);
+  }
+
+  function validPassword(value) {
+    const valid = /^[0-9]{6}$/;
+
+    return valid.test(value);
+  }
+
+  const isValid = validEmail(email) && validPassword(password);
 
   return (
     <>
@@ -45,22 +62,21 @@ export default function SignUp({ fields, onChange, onSubmit }) {
         label="비밀번호"
         type="password"
         name="password"
-        note="비밀번호는 간단한 숫자로만 설정해주세요."
+        note="비밀번호는 6자리 숫자로 설정해주세요."
         value={password}
         maxLength={6}
         placeholder="숫자 6자리를 입력해주세요."
         onChange={onChange}
       />
-      {isValid ? (
-        <ButtonWrapper>
-          <Button
-            type="button"
-            onClick={onSubmit}
-          >
-            가입하기
-          </Button>
-        </ButtonWrapper>
-      ) : null}
+      <ButtonWrapper>
+        <Button
+          type="button"
+          onClick={onSubmit}
+          disabled={!isValid}
+        >
+          가입하기
+        </Button>
+      </ButtonWrapper>
     </>
   );
 }
